@@ -1,16 +1,123 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "searchInput": {
+              "align": "center",
+              "backgroundColor": "#f5f4f2",
+              "borderRadius": "4px",
+              "disabled": true,
+              "placeholder": "搜索帖子",
+              "placeholderColor": "#6d6c67"
+            },
+            "buttons": [
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "right",
+                "fontSize": "20px",
+                "fontSrc": "/static/iconfont.ttf",
+                "text": "\ue668",
+                "width": "44px"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/news/news",
+      "style": {
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/msg/msg",
+      "style": {
+        "navigationBarTitleText": "消息列表",
+        "enablePullDownRefresh": true,
+        "app-plus": {
+          "titleNView": {
+            "buttons": [
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "left",
+                "fontSize": "20px",
+                "fontSrc": "/static/iconfont.ttf",
+                "text": "\ue611",
+                "width": "44px"
+              },
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "right",
+                "fontSize": "20px",
+                "fontSrc": "/static/iconfont.ttf",
+                "text": "\ue649",
+                "width": "44px"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [
+              {
+                "type": "menu"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "仿糗事百科",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#fc5c82",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/index-selected.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "动态",
+        "iconPath": "static/tabbar/news.png",
+        "selectedIconPath": "static/tabbar/news-selected.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "消息",
+        "iconPath": "static/tabbar/msg.png",
+        "selectedIconPath": "static/tabbar/msg-selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/tabbar/mine.png",
+        "selectedIconPath": "static/tabbar/mine-selected.png"
+      }
+    ]
+  }
 }
