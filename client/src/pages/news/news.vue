@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view @touchmove.stop.prevent="() => {}">
     <!-- 自定义导航栏 开始 -->
     <uni-nav-bar
       :border="false"
@@ -50,11 +50,27 @@
       <!-- 话题 -->
       <swiper-item>
         <scroll-view scroll-y style="height: 100%;">
-          <template v-if="list.length > 0"> </template>
-          <template v-else>
-            <!-- 无数据提示 -->
-            <no-data></no-data>
-          </template>
+          <!-- 热门分类 -->
+          <hot-cate :hotCate="hotCate"></hot-cate>
+          <!-- 搜索框 -->
+          <view class="px-2 my-2">
+            <view class="bg-light rounded py-1 flex align-center justify-center text-secondary">
+              <text class="iconfont icon-sousuo"></text>
+              <text class="ml-2">搜索话题</text>
+            </view>
+          </view>
+          <!-- 轮播图 -->
+          <swiper class="px-2 my-2" indicator-dots autoplay :interval="3000" :duration="1000">
+            <swiper-item v-for="(item, index) in carousel" :key="index">
+              <image class="w-100 rounded" style="height: 300rpx;" :src="item.cover" mode="aspectFill" />
+            </swiper-item>
+          </swiper>
+          <view class="divider"></view>
+          <!-- 最新更新 -->
+          <view class="px-2 mt-2 font-md">最近更新</view>
+          <block v-for="(item, index) in topicList" :key="index">
+            <topic-list :item="item" :index="index"></topic-list>
+          </block>
         </scroll-view>
       </swiper-item>
     </swiper>
@@ -64,9 +80,12 @@
 
 <script>
 import common from '@/common/mixins/common'
+import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
 import commonList from '@/components/common/common-list'
 import loadMore from '@/components/common/load-more'
-import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
+import hotCate from '@/components/common/hot-cate'
+import topicList from '@/components/common/topic-list'
+
 let demo = [
   {
     username: '煎蛋',
@@ -116,9 +135,11 @@ let demo = [
 ]
 export default {
   components: {
+    uniNavBar,
     commonList,
     loadMore,
-    uniNavBar,
+    hotCate,
+    topicList,
   },
   mixins: [common],
   data() {
@@ -130,6 +151,73 @@ export default {
         { id: 2, name: '话题' },
       ],
       list: [],
+      hotCate: [
+        {
+          id: 1,
+          name: '关注',
+        },
+        {
+          id: 2,
+          name: '推荐',
+        },
+        {
+          id: 3,
+          name: '体育',
+        },
+        {
+          id: 4,
+          name: '热点',
+        },
+        {
+          id: 5,
+          name: '财经',
+        },
+        {
+          id: 6,
+          name: '娱乐',
+        },
+      ],
+      carousel: [
+        {
+          cover: '/static/demo/banner1.jpg',
+        },
+        {
+          cover: '/static/demo/banner2.jpg',
+        },
+        {
+          cover: '/static/demo/banner3.jpg',
+        },
+      ],
+      topicList: [
+        {
+          cover: '/static/demo/topicpic/1.jpeg',
+          title: '话题名称1',
+          desc: '话题描述1',
+          news_count: 10,
+          today_count: 10,
+        },
+        {
+          cover: '/static/demo/topicpic/2.jpeg',
+          title: '话题名称2',
+          desc: '话题描述2',
+          news_count: 10,
+          today_count: 10,
+        },
+        {
+          cover: '/static/demo/topicpic/3.jpeg',
+          title: '话题名称3',
+          desc: '话题描述3',
+          news_count: 10,
+          today_count: 10,
+        },
+        {
+          cover: '/static/demo/topicpic/4.jpeg',
+          title: '话题名称4',
+          desc: '话题描述4',
+          news_count: 10,
+          today_count: 10,
+        },
+      ],
     }
   },
   onLoad() {

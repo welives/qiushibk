@@ -1,6 +1,14 @@
+/* #ifdef H5 */
+* {
+  box-sizing: border-box;
+}
+/* #endif */
+
+/* #ifndef H5 */
 :not(not) {
   box-sizing: border-box;
 }
+/* #endif */
 
 /* scroll-view */
 /* #ifndef APP-PLUS-NVUE */
