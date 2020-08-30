@@ -35,11 +35,11 @@
         <!-- 内容 -->
         <image v-if="item.cover" class="rounded w-100" style="height: 350rpx;" :src="item.cover" mode="aspectFill" />
       </view>
-      <view class="flex align-center py-1 animate__animated">
+      <view class="flex align-center py-1">
         <!-- 赞 -->
         <view
-          class="flex-fill flex align-center justify-center"
-          hover-class="animate__pulse text-main"
+          class="flex-fill flex align-center justify-center animate__animated"
+          hover-class="animate__pulse"
           :class="item.support.type === 'praise' ? 'text-main' : ''"
           @click.stop="support('praise')"
         >
@@ -48,8 +48,8 @@
         </view>
         <!-- 踩 -->
         <view
-          class="flex-fill flex align-center justify-center"
-          hover-class="animate__pulse text-main"
+          class="flex-fill flex align-center justify-center animate__animated"
+          hover-class="animate__pulse"
           :class="item.support.type === 'blame' ? 'text-main' : ''"
           @click.stop="support('blame')"
         >
@@ -58,7 +58,7 @@
         </view>
         <!-- 评论 -->
         <view
-          class="flex-fill flex align-center justify-center"
+          class="flex-fill flex align-center justify-center animate__animated"
           hover-class="animate__pulse text-main"
           @click.stop="openDetail"
         >
@@ -67,7 +67,7 @@
         </view>
         <!-- 分享 -->
         <view
-          class="flex-fill flex align-center justify-center"
+          class="flex-fill flex align-center justify-center animate__animated"
           hover-class="animate__pulse text-main"
           @click.stop="share"
         >

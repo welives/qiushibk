@@ -1,9 +1,7 @@
 {
+  "include": ["**/*"],
+  "exclude": ["src/*", "node_modules/*"],
   "compilerOptions": {
-    "types": [
-      "@dcloudio/types",
-      "miniprogram-api-typings",
-      "mini-types"
-    ]
+    "types": ["@dcloudio/types", "miniprogram-api-typings", "mini-types"]
   }
 }

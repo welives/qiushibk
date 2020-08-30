@@ -1,5 +1,22 @@
 <template>
   <view>
+    <!-- #ifdef MP -->
+    <!-- 微信小程序的自定义导航栏 -->
+    <view class="fixed-top bg-white flex align-center justify-between px-1">
+      <view
+        class="flex-fill flex align-center justify-center rounded py"
+        style="background-color: #f5f4f2;color: #6d6c67;"
+        @click.stop="navigateTo('search')"
+      >
+        <text class="iconfont icon-sousuo"></text>
+        <text class="ml-1">搜索帖子</text>
+      </view>
+      <view class="flex-shrink-0 text-center" style="width: 44px;color: #333333;" @click.stop="navigateTo('add-posts')">
+        <text class="iconfont" style="font-size: 20px;">&#xe668;</text>
+      </view>
+    </view>
+    <view style="height: 44px;"></view>
+    <!-- #endif -->
     <!-- 顶部选项卡 -->
     <scroll-view
       scroll-x
@@ -21,11 +38,19 @@
     </scroll-view>
     <swiper :current="tabIndex" :duration="150" @change="changeSwiper" :style="'height: ' + scrollHeight + 'px;'">
       <swiper-item v-for="(item, index) in dataList" :key="index">
-        <scroll-view scroll-y style="height: 100%;">
-          <block v-for="(list, idx) in item.list" :key="idx">
-            <common-list :item="list" :index="idx" @follow="follow" @support="support"></common-list>
-            <view class="divider"></view>
-          </block>
+        <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore(index)">
+          <template v-if="item.list.length > 0">
+            <block v-for="(list, idx) in item.list" :key="idx">
+              <common-list :item="list" :index="idx" @follow="follow" @support="support"></common-list>
+              <view class="divider"></view>
+            </block>
+            <!-- 上拉加载 -->
+            <load-more :loadText="load.text[load.type]"></load-more>
+          </template>
+          <template v-else>
+            <!-- 无数据提示 -->
+            <no-data></no-data>
+          </template>
         </scroll-view>
       </swiper-item>
     </swiper>
@@ -33,7 +58,9 @@
 </template>
 
 <script>
+import common from '@/common/mixins/common'
 import commonList from '@/components/common/common-list'
+import loadMore from '@/components/common/load-more'
 let demo = [
   {
     username: '煎蛋',
@@ -84,7 +111,9 @@ let demo = [
 export default {
   components: {
     commonList,
+    loadMore,
   },
+  mixins: [common],
   data() {
     return {
       // 顶部选项卡
@@ -135,15 +164,39 @@ export default {
   onLoad() {
     const res = uni.getSystemInfoSync()
     this.scrollHeight = res.windowHeight - 40
-    this.getData()
+    this.initData()
+  },
+  onNavigationBarSearchInputClicked(e) {
+    this.navigateTo('search')
+  },
+  onNavigationBarButtonTap(e) {
+    e.index === 0 && this.navigateTo('add-posts')
   },
   methods: {
-    getData() {
+    // 初始化数据
+    initData() {
       let arr = []
-      this.tabBars.forEach((v) => {
-        arr.push({ list: demo })
+      this.tabBars.forEach((v, index) => {
+        if (index < 3) {
+          arr.push({ list: demo })
+        } else {
+          arr.push({ list: [] })
+        }
       })
+
       this.dataList = arr
+    },
+    // scroll-view组件触底事件
+    loadMore(index) {
+      if (this.load.type !== 2) {
+        if (this.load.type === 1) return
+        let list = this.dataList[index].list
+        setTimeout(() => {
+          this.load.type = 1
+          this.dataList[index].list = [...list, ...list]
+          this.load.type = 0
+        }, 250)
+      }
     },
     // 切换选项卡
     changeTab(index) {
@@ -152,22 +205,23 @@ export default {
       // 滚动到指定元素
       this.scrollInto = 'tab_' + this.tabBars[index].id
     },
+    // swiper组件左右切换
     changeSwiper(e) {
-      // this.tabIndex = e.detail.current
       this.changeTab(e.detail.current)
     },
     // 关注 | 取消关注
     follow(e) {
-      this.list[e].isFollow = !this.list[e].isFollow
+      let item = this.dataList[this.tabIndex].list[e]
+      item.isFollow = !item.isFollow
       return uni.showToast({
-        title: this.list[e].isFollow ? '关注成功' : '已取消关注',
+        title: item.isFollow ? '关注成功' : '已取消关注',
         icon: 'none',
       })
     },
     // 赞 | 踩
     support(e) {
-      // 拿到当前的操作对象
-      let item = this.list[e.index]
+      // 拿到当前操作的对象
+      let item = this.dataList[this.tabIndex].list[e.index]
       // 之前没赞也没踩
       if (item.support.type === '') {
         item.support.type = e.type

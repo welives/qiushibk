@@ -1,5 +1,6 @@
 {
   "pages": [
+    // 首页
     {
       "path": "pages/index/index",
       "style": {
@@ -28,6 +29,7 @@
         }
       }
     },
+    // 动态页
     {
       "path": "pages/news/news",
       "style": {
@@ -36,6 +38,7 @@
         }
       }
     },
+    // 消息列表页
     {
       "path": "pages/msg/msg",
       "style": {
@@ -67,6 +70,7 @@
         }
       }
     },
+    // 个人中心
     {
       "path": "pages/mine/mine",
       "style": {
@@ -79,6 +83,43 @@
               }
             ]
           }
+        }
+      }
+    },
+    // 搜索页
+    {
+      "path": "pages/search/search",
+      "style": {
+        "navigationBarTitleText": "search",
+        "app-plus": {
+          "titleNView": {
+            "searchInput": {
+              "align": "center",
+              "backgroundColor": "#f5f4f2",
+              "borderRadius": "4px",
+              "placeholder": "输入搜索关键词",
+              "placeholderColor": "#6d6c67"
+            },
+            "buttons": [
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "right",
+                "fontSize": "14px",
+                "text": "搜索",
+                "width": "44px"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/add-posts/add-posts",
+      "style": {
+        "navigationBarTitleText": "发帖",
+        "app-plus": {
+          "titleNView": false
         }
       }
     }
