@@ -1,23 +1,30 @@
 <template>
-  <view>
+  <view @touchmove.stop.prevent="() => {}">
     <!-- #ifdef MP -->
-    <!-- 微信小程序的自定义导航栏 -->
-    <view class="fixed-top bg-white flex align-center justify-between px-1">
+    <!-- 微信小程序端生效 -->
+    <!-- 自定义导航栏 开始 -->
+    <view class="fixed-top bg-white flex align-center justify-between w-100" style="height: 40px;">
       <view
-        class="flex-fill flex align-center justify-center rounded py"
+        class="flex-fill flex align-center justify-center rounded ml-1"
         style="background-color: #f5f4f2;color: #6d6c67;"
         @click.stop="navigateTo('search')"
       >
-        <text class="iconfont icon-sousuo"></text>
+        <text class="iconfont icon-sousuo font-md"></text>
         <text class="ml-1">搜索帖子</text>
       </view>
-      <view class="flex-shrink-0 text-center" style="width: 44px;color: #333333;" @click.stop="navigateTo('add-posts')">
-        <text class="iconfont" style="font-size: 20px;">&#xe668;</text>
+      <view
+        class="flex-shrink-0 text-center mx-1"
+        style="width: 44px;color: #333333;"
+        @click.stop="navigateTo('add-posts')"
+      >
+        <text class="iconfont font-lg">&#xe668;</text>
       </view>
     </view>
-    <view style="height: 44px;"></view>
+    <view style="height: 40px;"></view>
+    <!-- 自定义导航栏 结束 -->
     <!-- #endif -->
-    <!-- 顶部选项卡 -->
+
+    <!-- 顶部选项卡 开始 -->
     <scroll-view
       scroll-x
       class="scroll-row border-bottom border-light-secondary"
@@ -26,17 +33,25 @@
       scroll-with-animation
     >
       <view
-        class="scroll-row-item px-3 py-1"
+        class="scroll-row-item px-2 py-1"
         :class="tabIndex === index ? 'text-main font' : ''"
         :id="'tab_' + item.id"
         v-for="(item, index) in tabBars"
         :key="index"
         @click.stop="changeTab(index)"
       >
-        {{ item.name }}
+        <text
+          class="pb-1 px-1"
+          :class="tabIndex === index ? 'border-bottom border-main' : ''"
+          style="border-width: 5rpx;"
+          >{{ item.name }}</text
+        >
       </view>
     </scroll-view>
-    <swiper :current="tabIndex" :duration="150" @change="changeSwiper" :style="'height: ' + scrollHeight + 'px;'">
+    <!-- 顶部选项卡 结束 -->
+
+    <!-- 滑动内容区 开始 -->
+    <swiper :current="tabIndex" :duration="150" :style="'height: ' + scrollHeight + 'px;'" @change="changeSwiper">
       <swiper-item v-for="(item, index) in dataList" :key="index">
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore(index)">
           <template v-if="item.list.length > 0">
@@ -54,6 +69,7 @@
         </scroll-view>
       </swiper-item>
     </swiper>
+    <!-- 滑动内容区 结束 -->
   </view>
 </template>
 
@@ -163,7 +179,15 @@ export default {
   },
   onLoad() {
     const res = uni.getSystemInfoSync()
+    // #ifdef MP
+    // 微信小程序端生效 内容区高度 = 可用高度 - 自定义导航栏 - 选项卡
+    this.scrollHeight = res.windowHeight - 40 - 40
+    // #endif
+
+    // #ifndef MP
+    // 非微信小程序端生效 内容区高度 = 可用高度 - 选项卡
     this.scrollHeight = res.windowHeight - 40
+    // #endif
     this.initData()
   },
   onNavigationBarSearchInputClicked(e) {
@@ -210,8 +234,8 @@ export default {
       this.changeTab(e.detail.current)
     },
     // 关注 | 取消关注
-    follow(e) {
-      let item = this.dataList[this.tabIndex].list[e]
+    follow(index) {
+      let item = this.dataList[this.tabIndex].list[index]
       item.isFollow = !item.isFollow
       return uni.showToast({
         title: item.isFollow ? '关注成功' : '已取消关注',

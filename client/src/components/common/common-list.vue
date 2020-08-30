@@ -26,7 +26,7 @@
           :hover-class="item.isFollow ? 'bg-hover-light animate__pulse' : 'bg-hover-main animate__pulse'"
           @click.stop="follow"
         >
-          <text class="px-2 py-1">{{ item.isFollow ? '取消关注' : '关注' }}</text>
+          <text class="px-3 py-1">{{ item.isFollow ? '取消关注' : '关注' }}</text>
         </view>
       </view>
       <view @click.stop="openDetail">

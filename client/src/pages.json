@@ -4,7 +4,9 @@
     {
       "path": "pages/index/index",
       "style": {
+        "navigationBarTitleText": "首页",
         "app-plus": {
+          "scrollIndicator": "none",
           "titleNView": {
             "searchInput": {
               "align": "center",
@@ -33,9 +35,8 @@
     {
       "path": "pages/news/news",
       "style": {
-        "app-plus": {
-          "titleNView": false
-        }
+        "navigationStyle": "custom",
+        "app-plus": {}
       }
     },
     // 消息列表页
@@ -90,8 +91,9 @@
     {
       "path": "pages/search/search",
       "style": {
-        "navigationBarTitleText": "search",
+        "navigationBarTitleText": "",
         "app-plus": {
+          "softinputNavBar": "none",
           "titleNView": {
             "searchInput": {
               "align": "center",
@@ -117,9 +119,10 @@
     {
       "path": "pages/add-posts/add-posts",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "发帖",
         "app-plus": {
-          "titleNView": false
+          "softinputNavBar": "none"
         }
       }
     }

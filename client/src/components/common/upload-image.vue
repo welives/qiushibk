@@ -61,7 +61,7 @@ export default {
     }
   },
   // uni-app 组件支持的生命周期，与vue标准组件的生命周期相同。非页面的组件没有onLoad等生命周期
-  created() {
+  mounted() {
     this.imageList = this.list || []
   },
   destroyed() {

@@ -1,6 +1,26 @@
 <template>
-  <view>
-    <!-- 搜索历史 -->
+  <view :style="'height:' + scrollHeight + 'px;'">
+    <!-- #ifdef MP -->
+    <!-- 微信小程序端生效 -->
+    <!-- 自定义导航栏 开始 -->
+    <view class="fixed-top bg-white flex align-center justify-between w-100" style="height: 40px;">
+      <input
+        type="text"
+        class="flex-fill rounded ml-2 px-2"
+        style="background-color: #f5f4f2; height: 80%;"
+        :placeholder="'\ue606 输入搜索关键词'"
+        placeholder-class="iconfont text-center font"
+        placeholder-style="color: #6d6c67;"
+      />
+      <view class="flex-shrink-0 text-center mx-1" style="width: 44px;color: #333333;">
+        <text class="font">搜索</text>
+      </view>
+    </view>
+    <view style="height: 40px;"></view>
+    <!-- 自定义导航栏 结束 -->
+    <!-- #endif -->
+
+    <!-- 搜索历史 开始 -->
     <view v-if="list.length === 0" class="px-2">
       <view class="py-1 font-md text-muted">搜索历史</view>
       <view class="flex flex-wrap">
@@ -16,9 +36,12 @@
         </view>
       </view>
     </view>
+    <!-- 搜索历史 结束 -->
+
     <!-- 搜索结果 -->
     <block v-else v-for="(item, index) in list" :key="index">
       <common-list :item="item" :index="index"></common-list>
+      <view class="divider"></view>
     </block>
   </view>
 </template>
@@ -78,6 +101,7 @@ export default {
   },
   data() {
     return {
+      scrollHeight: 600,
       // 关键字
       keyword: '',
       // 搜索历史
@@ -105,11 +129,24 @@ export default {
       list: [],
     }
   },
+  onLoad() {
+    const res = uni.getSystemInfoSync()
+    this.scrollHeight = res.windowHeight
+  },
   onNavigationBarButtonTap(e) {
     e.index === 0 && this.search()
   },
   onNavigationBarSearchInputChanged(e) {
     this.keyword = e.text
+  },
+  // 监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。
+  onNavigationBarSearchInputConfirmed(e) {
+    this.keyword = e.text
+    this.search()
+    // if (e.text) {
+    //   this.keyword = e.text
+    //   this.search()
+    // }
   },
   methods: {
     search() {
@@ -117,6 +154,7 @@ export default {
         return uni.showToast({
           title: '请输入关键字',
           icon: 'none',
+          position: 'top',
         })
       }
       // 收起键盘

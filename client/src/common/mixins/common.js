@@ -18,6 +18,7 @@ export default {
         delta: step,
       })
     },
+    // 跳转到指定页面
     navigateTo(path) {
       uni.navigateTo({
         url: `/pages/${path}/${path}`,
