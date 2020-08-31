@@ -178,14 +178,16 @@
               "placeholderColor": "#6d6c67"
             },
             "buttons": [
+              // #ifdef APP-PLUS
               {
                 "color": "#333333",
                 "colorPressed": "#fd597c",
                 "float": "right",
                 "fontSize": "15px",
-                "text": "搜索",
+                "text": "取消",
                 "width": "44px"
               }
+              // #endif
             ]
           }
         }

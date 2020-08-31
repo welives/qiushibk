@@ -32,13 +32,13 @@
       <!-- 关注 -->
       <swiper-item>
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
-          <template v-if="list.length > 0">
-            <block v-for="(item, index) in list" :key="index">
+          <template v-if="dataList.length > 0">
+            <block v-for="(item, index) in dataList" :key="index">
               <common-list :item="item" :index="index" @follow="follow" @support="support"></common-list>
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
-            <load-more :loadText="load.text[load.type]"></load-more>
+            <load-more :loadText="dataList.length > limit ? load.text[load.type] : load.text[2]"></load-more>
           </template>
           <template v-else>
             <!-- 无数据提示 -->
@@ -79,14 +79,7 @@
 </template>
 
 <script>
-import common from '@/common/mixins/common'
-import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
-import commonList from '@/components/common/common-list'
-import loadMore from '@/components/common/load-more'
-import hotCate from '@/components/common/hot-cate'
-import topicList from '@/components/common/topic-list'
-
-let demo = [
+const demo = [
   {
     username: '煎蛋',
     avatar: '/static/default.jpg',
@@ -133,6 +126,13 @@ let demo = [
     share_count: 0,
   },
 ]
+import common from '@/common/mixins/common'
+import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
+import commonList from '@/components/common/common-list'
+import loadMore from '@/components/common/load-more'
+import hotCate from '@/components/common/hot-cate'
+import topicList from '@/components/common/topic-list'
+
 export default {
   components: {
     uniNavBar,
@@ -150,7 +150,7 @@ export default {
         { id: 1, name: '关注' },
         { id: 2, name: '话题' },
       ],
-      list: [],
+      dataList: [],
       hotCate: [
         {
           id: 1,
@@ -223,9 +223,14 @@ export default {
   onLoad() {
     const res = uni.getSystemInfoSync()
     this.scrollHeight = res.windowHeight - res.statusBarHeight - 44
-    this.list = demo
+    this.initData()
   },
   methods: {
+    initData() {
+      this.dataList = demo.map((v) => {
+        return { ...v }
+      })
+    },
     // swiper组件左右切换
     changeSwiper(e) {
       this.tabIndex = e.detail.current
@@ -236,14 +241,14 @@ export default {
         if (this.load.type === 1) return
         setTimeout(() => {
           this.load.type = 1
-          this.list = [...this.list, ...this.list]
+          this.dataList = [...this.dataList, ...this.dataList]
           this.load.type = 0
         }, 500)
       }
     },
     // 关注 | 取消关注
     follow(index) {
-      let item = this.list[index]
+      let item = this.dataList[index]
       item.isFollow = !item.isFollow
       return uni.showToast({
         title: item.isFollow ? '关注成功' : '已取消关注',
@@ -253,7 +258,7 @@ export default {
     // 赞 | 踩
     support(e) {
       // 拿到当前操作的对象
-      let item = this.list[e.index]
+      let item = this.dataList[e.index]
       // 之前没赞也没踩
       if (item.support.type === '') {
         item.support.type = e.type

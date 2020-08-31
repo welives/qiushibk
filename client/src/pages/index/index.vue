@@ -60,7 +60,7 @@
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
-            <load-more :loadText="load.text[load.type]"></load-more>
+            <load-more :loadText="item.list.length > limit ? load.text[load.type] : load.text[2]"></load-more>
           </template>
           <template v-else>
             <!-- 无数据提示 -->
@@ -74,10 +74,7 @@
 </template>
 
 <script>
-import common from '@/common/mixins/common'
-import commonList from '@/components/common/common-list'
-import loadMore from '@/components/common/load-more'
-let demo = [
+const demo = [
   {
     username: '煎蛋',
     avatar: '/static/default.jpg',
@@ -124,6 +121,10 @@ let demo = [
     share_count: 0,
   },
 ]
+import common from '@/common/mixins/common'
+import commonList from '@/components/common/common-list'
+import loadMore from '@/components/common/load-more'
+
 export default {
   components: {
     commonList,

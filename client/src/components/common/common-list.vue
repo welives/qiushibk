@@ -20,7 +20,7 @@
       </view>
       <!-- 关注按钮 -->
       <view
-        class="rounded animate__animated"
+        class="rounded flex-shrink-0 animate__animated"
         :class="item.isFollow ? 'bg-light text-dark' : 'bg-main text-white'"
         :hover-class="item.isFollow ? 'bg-hover-light animate__pulse' : 'bg-hover-main animate__pulse'"
         @click.stop="follow"

@@ -21,7 +21,7 @@
     <!-- #endif -->
 
     <!-- 搜索历史 开始 -->
-    <view v-if="list.length === 0" class="px-2">
+    <view v-if="dataList.length === 0" class="px-2">
       <view class="py-1 font-md text-muted">搜索历史</view>
       <view class="flex flex-wrap">
         <view
@@ -39,7 +39,7 @@
     <!-- 搜索历史 结束 -->
 
     <!-- 搜索结果 -->
-    <block v-else v-for="(item, index) in list" :key="index">
+    <block v-else v-for="(item, index) in dataList" :key="index">
       <common-list :item="item" :index="index"></common-list>
       <view class="divider"></view>
     </block>
@@ -47,8 +47,7 @@
 </template>
 
 <script>
-import commonList from '@/components/common/common-list'
-let demo = [
+const demo = [
   {
     username: '煎蛋',
     avatar: '/static/default.jpg',
@@ -95,6 +94,8 @@ let demo = [
     share_count: 0,
   },
 ]
+import commonList from '@/components/common/common-list'
+
 export default {
   components: {
     commonList,
@@ -126,7 +127,7 @@ export default {
         },
       ],
       // 搜索结果
-      list: [],
+      dataList: [],
     }
   },
   onLoad() {
@@ -143,10 +144,6 @@ export default {
   onNavigationBarSearchInputConfirmed(e) {
     this.keyword = e.text
     this.search()
-    // if (e.text) {
-    //   this.keyword = e.text
-    //   this.search()
-    // }
   },
   methods: {
     search() {
@@ -162,7 +159,9 @@ export default {
       // 搜索请求
       uni.showLoading({ title: '加载中' })
       setTimeout(() => {
-        this.list = demo
+        this.dataList = demo.map((v) => {
+          return { ...v }
+        })
         uni.hideLoading()
       }, 1000)
     },

@@ -1,7 +1,7 @@
 <template>
   <view class="px-2">
     <view class="flex align-center py-2 border-bottom border-light-secondary">
-      <image class="rounded-circle" style="width: 80rpx; height: 80rpx;" :src="item.avatar" mode="" />
+      <image class="rounded-circle flex-shrink-0" style="width: 80rpx; height: 80rpx;" :src="item.avatar" />
       <view class="ml-2 flex-fill flex flex-column" style="line-height: 1.5;">
         <view class="flex align-center justify-between">
           <text class="font-md">{{ item.username }}</text>
@@ -9,7 +9,7 @@
         </view>
         <view class="flex align-center justify-between">
           <text class="text-muted text-ellipsis" style="max-width: 500rpx;">{{ item.content }}</text>
-          <uni-badge :text="item.unread" type="error"></uni-badge>
+          <uni-badge v-if="!item.isRead" :text="item.unread" type="error" @click="$emit('mark', index)"></uni-badge>
         </view>
       </view>
     </view>

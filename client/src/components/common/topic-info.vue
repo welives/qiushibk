@@ -5,7 +5,12 @@
     </view>
     <view class="position-relative px-2 bg-white" style="z-index: 10;">
       <view class="flex">
-        <image class="rounded" style="width: 150rpx; height: 150rpx; margin-top: -75rpx;" :src="detail.cover" mode="" />
+        <image
+          class="rounded flex-shrink-0"
+          style="width: 150rpx; height: 150rpx; margin-top: -75rpx;"
+          :src="detail.cover"
+          mode="aspectFill"
+        />
         <text class="font-md ml-2 mt-1">#{{ detail.title }}#</text>
       </view>
       <view class="flex align-center text-light-muted my-1">

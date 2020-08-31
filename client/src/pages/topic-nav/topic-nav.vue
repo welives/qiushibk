@@ -35,7 +35,7 @@
               <topic-list :item="list" :index="idx"></topic-list>
             </block>
             <!-- 上拉加载 -->
-            <load-more :loadText="load.text[load.type]"></load-more>
+            <load-more :loadText="item.list.length > limit ? load.text[load.type] : load.text[2]"></load-more>
           </template>
           <template v-else>
             <!-- 无数据提示 -->
@@ -49,10 +49,7 @@
 </template>
 
 <script>
-import common from '@/common/mixins/common'
-import topicList from '@/components/common/topic-list'
-import loadMore from '@/components/common/load-more'
-let demo = [
+const demo = [
   {
     cover: '/static/demo/topicpic/1.jpeg',
     title: '话题名称1',
@@ -103,6 +100,10 @@ let demo = [
     today_count: 10,
   },
 ]
+import common from '@/common/mixins/common'
+import topicList from '@/components/common/topic-list'
+import loadMore from '@/components/common/load-more'
+
 export default {
   components: {
     topicList,
