@@ -45,6 +45,9 @@
     {
       "path": "pages/msg/msg",
       "style": {
+        // #ifdef MP
+        "navigationStyle": "custom",
+        // #endif
         "navigationBarTitleText": "消息",
         // 开启下来刷新
         "enablePullDownRefresh": true,
