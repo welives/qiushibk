@@ -6,12 +6,14 @@
       "style": {
         "navigationBarTitleText": "首页",
         "app-plus": {
+          // 取消iOS端软键盘上方横条
           "scrollIndicator": "none",
           "titleNView": {
             "searchInput": {
               "align": "center",
               "backgroundColor": "#f5f4f2",
               "borderRadius": "4px",
+              // 原生导航栏上的搜索框禁止输入
               "disabled": true,
               "placeholder": "搜索帖子",
               "placeholderColor": "#6d6c67"
@@ -35,15 +37,16 @@
     {
       "path": "pages/news/news",
       "style": {
-        "navigationStyle": "custom",
-        "app-plus": {}
+        // 启用自定义导航
+        "navigationStyle": "custom"
       }
     },
     // 消息列表页
     {
       "path": "pages/msg/msg",
       "style": {
-        "navigationBarTitleText": "消息列表",
+        "navigationBarTitleText": "消息",
+        // 开启下来刷新
         "enablePullDownRefresh": true,
         "app-plus": {
           "titleNView": {
@@ -91,7 +94,7 @@
     {
       "path": "pages/search/search",
       "style": {
-        "navigationBarTitleText": "",
+        "navigationBarTitleText": "搜索",
         "app-plus": {
           "softinputNavBar": "none",
           "titleNView": {
@@ -107,7 +110,7 @@
                 "color": "#333333",
                 "colorPressed": "#fd597c",
                 "float": "right",
-                "fontSize": "14px",
+                "fontSize": "15px",
                 "text": "搜索",
                 "width": "44px"
               }
@@ -116,13 +119,72 @@
         }
       }
     },
+    // 发帖页面
     {
       "path": "pages/add-posts/add-posts",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "发帖",
         "app-plus": {
+          "animationType": "slide-in-left",
           "softinputNavBar": "none"
+        }
+      }
+    },
+    // 话题分类页
+    {
+      "path": "pages/topic-nav/topic-nav",
+      "style": {
+        "navigationBarTitleText": "话题分类"
+      }
+    },
+    // 话题详情页
+    {
+      "path": "pages/topic-detail/topic-detail",
+      "style": {
+        "navigationBarTitleText": "话题详情",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent",
+            "buttons": [
+              {
+                "type": "menu"
+              }
+            ]
+          }
+        }
+      }
+    },
+    // 好友列表页
+    {
+      "path": "pages/friend-list/friend-list",
+      "style": {
+        "navigationBarTitleText": "好友列表",
+        "app-plus": {
+          // 进入页面时的动画效果
+          "animationType": "slide-in-left",
+          "titleNView": {
+            // 隐藏左侧返回按钮
+            "autoBackButton": false,
+            "searchInput": {
+              "align": "center",
+              "backgroundColor": "#f5f4f2",
+              "borderRadius": "4px",
+              "disabled": true,
+              "placeholder": "搜索用户",
+              "placeholderColor": "#6d6c67"
+            },
+            "buttons": [
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "right",
+                "fontSize": "15px",
+                "text": "搜索",
+                "width": "44px"
+              }
+            ]
+          }
         }
       }
     }

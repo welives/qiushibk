@@ -238,7 +238,7 @@ export default {
           this.load.type = 1
           this.list = [...this.list, ...this.list]
           this.load.type = 0
-        }, 250)
+        }, 500)
       }
     },
     // 关注 | 取消关注
@@ -280,4 +280,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <view class="p-2 flex align-center justify-center">
+  <view class="p-2 flex align-center justify-center" @click.stop="open">
     <image class="rounded" :src="item.cover" mode="aspectFill" style="width: 150rpx; height: 150rpx;" />
     <view class="ml-2 flex-fill flex flex-column text-light-muted" style="line-height: 1.5;">
       <text class="text-body font-md">#{{ item.title }}#</text>
@@ -17,6 +17,13 @@ export default {
   props: {
     item: Object,
     index: Number,
+  },
+  methods: {
+    open() {
+      uni.navigateTo({
+        url: '../../pages/topic-detail/topic-detail?detail=' + encodeURIComponent(JSON.stringify(this.item)),
+      })
+    },
   },
 }
 </script>

@@ -209,7 +209,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .cell-pd {
   padding: 22rpx 30rpx;
 }

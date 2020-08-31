@@ -133,7 +133,6 @@ export default {
   data() {
     return {
       // 顶部选项卡
-      scrollInto: '',
       tabIndex: 0,
       tabBars: [
         {
@@ -173,6 +172,7 @@ export default {
           name: '本地',
         },
       ],
+      scrollInto: '',
       dataList: [],
       scrollHeight: 600,
     }
@@ -219,7 +219,7 @@ export default {
           this.load.type = 1
           this.dataList[index].list = [...list, ...list]
           this.load.type = 0
-        }, 250)
+        }, 500)
       }
     },
     // 切换选项卡
