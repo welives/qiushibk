@@ -95,7 +95,9 @@
           "titleNView": {
             "buttons": [
               {
-                "type": "menu"
+                "type": "menu",
+                "float": "right",
+                "width": "44px"
               }
             ]
           }
@@ -166,7 +168,8 @@
             "type": "transparent",
             "buttons": [
               {
-                "type": "menu"
+                "type": "menu",
+                "float": "right"
               }
             ]
           }
@@ -227,6 +230,27 @@
                 "fontSize": "20px",
                 "fontSrc": "/static/iconfont.ttf",
                 "text": "\ue628",
+                "width": "44px"
+              }
+            ]
+          }
+        }
+      }
+    },
+    // 帖子详情页
+    {
+      "path": "pages/post-detail/post-detail",
+      "style": {
+        "navigationBarTitleText": "帖子详情",
+        "app-plus": {
+          "softinputNavBar": "none",
+          // 关闭页面回弹效果
+          "bounce": "none",
+          "titleNView": {
+            "buttons": [
+              {
+                "type": "menu",
+                "float": "right",
                 "width": "44px"
               }
             ]

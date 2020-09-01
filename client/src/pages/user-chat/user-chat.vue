@@ -17,29 +17,7 @@
     <!-- 聊天内容 结束 -->
 
     <!-- 底部操作条 开始 -->
-    <view
-      class="fixed-bottom flex align-center justify-between bg-white px-2 border-top border-light-secondary"
-      style="height: 50px;"
-    >
-      <view class="flex-fill py-1 rounded" style="background-color: rgba(0, 0, 0, 0.05);">
-        <input
-          type="text"
-          class="px-2"
-          placeholder="文明发言"
-          placeholder-class="text-light-muted"
-          v-model="content"
-          @confirm="submit"
-        />
-      </view>
-      <view
-        class="flex-shrink-0 text-center text-main animate__animated"
-        hover-class="animate__pulse"
-        style="width: 50px;"
-        @click.stop="submit"
-      >
-        <text class="iconfont icon-fabu" style="font-size: 50rpx;"></text>
-      </view>
-    </view>
+    <bottom-input @submit="doSubmit"></bottom-input>
     <!-- 底部操作条 结束 -->
   </view>
 </template>
@@ -75,23 +53,26 @@ const demo = [
   },
 ]
 import chatList from '@/components/common/chat-list'
+import bottomInput from '@/components/common/bottom-input'
 
 export default {
-  components: { chatList },
+  components: {
+    chatList,
+    bottomInput,
+  },
   data() {
     return {
       scrollHeight: 600,
       dataList: [],
-      content: '',
       scrollInto: '',
     }
   },
   onLoad() {
+    const res = uni.getSystemInfoSync()
+    this.scrollHeight = res.windowHeight - 50
     uni.setNavigationBarTitle({
       title: '女神',
     })
-    const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - 50
     this.initData()
   },
   onReady() {
@@ -105,18 +86,16 @@ export default {
       })
     },
     // 发送
-    submit() {
-      if (!this.content) return
+    doSubmit(data) {
       let msg = {
         user_id: 1,
         username: '舔狗',
         avatar: '/static/default.jpg',
-        content: this.content,
+        content: data,
         type: 'text',
         created_at: new Date().getTime(),
       }
-      this.content && this.dataList.push(msg)
-      this.content = ''
+      this.dataList.push(msg)
       this.scrollToBottom()
     },
     // 滚动到底部

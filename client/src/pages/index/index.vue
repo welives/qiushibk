@@ -56,7 +56,7 @@
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore(index)">
           <template v-if="item.list.length > 0">
             <block v-for="(list, idx) in item.list" :key="idx">
-              <post-list :item="list" :index="idx" @follow="follow" @support="support"></post-list>
+              <post-list :item="list" :index="idx" @follow="doFollow" @support="doSupport"></post-list>
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
@@ -78,9 +78,9 @@ const demo = [
   {
     username: '煎蛋',
     avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
     isFollow: false,
-    title: '测试标题',
+    title: '测试标题1',
+    content: '英国大量上班族希望延续远程办公的政策',
     cover: '/static/demo/datapic/11.jpg',
     support: {
       type: 'praise',
@@ -89,13 +89,14 @@ const demo = [
     },
     comment_count: 0,
     share_count: 0,
+    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
   },
   {
     username: '咸鱼',
     avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
     isFollow: true,
-    title: '测试标题',
+    title: '测试标题2',
+    content: '外部供应链被切断，内部猴子不够用',
     cover: '/static/demo/datapic/12.jpg',
     support: {
       type: 'blame',
@@ -104,13 +105,14 @@ const demo = [
     },
     comment_count: 0,
     share_count: 0,
+    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
   },
   {
     username: '绿师',
     avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
     isFollow: true,
-    title: '测试标题',
+    title: '测试标题3',
+    content: 'Y染色体的消失，并不意味着男性的灭绝',
     cover: '/static/demo/datapic/2.jpg',
     support: {
       type: '',
@@ -119,6 +121,7 @@ const demo = [
     },
     comment_count: 0,
     share_count: 0,
+    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
   },
 ]
 import common from '@/common/mixins/common'
@@ -247,7 +250,7 @@ export default {
       this.changeTab(e.detail.current)
     },
     // 关注 | 取消关注
-    follow(index) {
+    doFollow(index) {
       let item = this.dataList[this.tabIndex].list[index]
       item.isFollow = !item.isFollow
       return uni.showToast({
@@ -256,7 +259,7 @@ export default {
       })
     },
     // 赞 | 踩
-    support(e) {
+    doSupport(e) {
       // 拿到当前操作的对象
       let item = this.dataList[this.tabIndex].list[e.index]
       // 之前没赞也没踩

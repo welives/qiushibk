@@ -15,7 +15,7 @@
         <!-- 昵称 | 发布时间 -->
         <view class="flex-fill flex flex-column line-h px-2">
           <view class="font">{{ item.username }}</view>
-          <text class="text-light-muted font-small">{{ item.created_at }}</text>
+          <text class="text-light-muted font-small">{{ item.created_at | formatTime }}</text>
         </view>
       </view>
       <!-- 关注按钮 -->
@@ -23,7 +23,7 @@
         class="rounded flex-shrink-0 animate__animated"
         :class="item.isFollow ? 'bg-light text-dark' : 'bg-main text-white'"
         :hover-class="item.isFollow ? 'bg-hover-light animate__pulse' : 'bg-hover-main animate__pulse'"
-        @click.stop="follow"
+        @click.stop="$emit('follow', index)"
       >
         <text class="px-3 py-1">{{ item.isFollow ? '取消关注' : '关注' }}</text>
       </view>
@@ -31,8 +31,11 @@
     <view @click.stop="openDetail">
       <!-- 标题 -->
       <view class="my-1 font-md">{{ item.title }}</view>
-      <!-- 内容 -->
-      <image v-if="item.cover" class="rounded w-100" style="height: 350rpx;" :src="item.cover" mode="aspectFill" />
+      <!-- 默认插槽 -->
+      <slot>
+        <!-- 内容 -->
+        <image v-if="item.cover" class="rounded w-100" style="height: 350rpx;" :src="item.cover" mode="aspectFill" />
+      </slot>
     </view>
     <view class="flex align-center py-1">
       <!-- 赞 -->
@@ -40,7 +43,7 @@
         class="flex-fill flex align-center justify-center animate__animated"
         hover-class="animate__pulse"
         :class="item.support.type === 'praise' ? 'text-main' : ''"
-        @click.stop="support('praise')"
+        @click.stop="onSupport('praise')"
       >
         <text class="iconfont icon-dianzan2"></text>
         <text class="ml-1">{{ item.support.praise_count > 0 ? item.support.praise_count : '赞' }}</text>
@@ -50,7 +53,7 @@
         class="flex-fill flex align-center justify-center animate__animated"
         hover-class="animate__pulse"
         :class="item.support.type === 'blame' ? 'text-main' : ''"
-        @click.stop="support('blame')"
+        @click.stop="onSupport('blame')"
       >
         <text class="iconfont icon-cai"></text>
         <text class="ml-1">{{ item.support.blame_count > 0 ? item.support.blame_count : '踩' }}</text>
@@ -59,7 +62,7 @@
       <view
         class="flex-fill flex align-center justify-center animate__animated"
         hover-class="animate__pulse text-main"
-        @click.stop="openDetail"
+        @click.stop="onComment"
       >
         <text class="iconfont icon-pinglun2"></text>
         <text class="ml-1">{{ item.comment_count > 0 ? item.comment_count : '评论' }}</text>
@@ -68,7 +71,7 @@
       <view
         class="flex-fill flex align-center justify-center animate__animated"
         hover-class="animate__pulse text-main"
-        @click.stop="share"
+        @click.stop="onShare"
       >
         <text class="iconfont icon-zhuanfa1"></text>
         <text class="ml-1">{{ item.share_count > 0 ? item.share_count : '分享' }}</text>
@@ -78,11 +81,20 @@
 </template>
 
 <script>
+import common from '@/common/mixins/common'
 export default {
   props: {
     item: Object,
-    index: Number,
+    index: {
+      type: Number,
+      default: -1,
+    },
+    isDetail: {
+      type: Boolean,
+      default: false,
+    },
   },
+  mixins: [common],
   data() {
     return {}
   },
@@ -91,20 +103,24 @@ export default {
       console.log('打开个人中心')
     },
     openDetail() {
-      console.log('进入详情页')
+      // 不是详情页才跳转
+      !this.isDetail &&
+        uni.navigateTo({
+          url: '../../pages/post-detail/post-detail?detail=' + encodeURIComponent(JSON.stringify(this.item)),
+        })
     },
-    follow() {
-      this.$emit('follow', this.index)
-    },
-    support(type) {
+    onSupport(type) {
       this.$emit('support', {
         type,
         index: this.index,
       })
     },
-    share() {
-      console.log('分享')
+    onComment() {
+      // 不是详情页才跳转
+      this.openDetail()
+      this.isDetail && this.$emit('comment')
     },
+    onShare() {},
   },
 }
 </script>

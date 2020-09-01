@@ -43,6 +43,7 @@
         <text class="text-white px-3 py font-md">发帖</text>
       </view>
     </view>
+    <view style="height: 50px;"></view>
     <!-- 底部操作条 结束 -->
   </view>
 </template>
