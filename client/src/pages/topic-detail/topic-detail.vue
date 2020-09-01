@@ -32,7 +32,7 @@
     <!-- 列表 开始 -->
     <template v-if="listData.length > 0">
       <block v-for="(item, index) in listData" :key="index">
-        <common-list :item="item" :index="index"></common-list>
+        <post-list :item="item" :index="index"></post-list>
         <view class="divider"></view>
       </block>
       <load-more :loadText="listData.length > limit ? load.text[load.type] : load.text[2]"></load-more>
@@ -94,13 +94,13 @@ const demo = [
   },
 ]
 import common from '@/common/mixins/common'
-import commonList from '@/components/common/common-list'
+import postList from '@/components/common/post-list'
 import topicInfo from '@/components/common/topic-info'
 import loadMore from '@/components/common/load-more'
 
 export default {
   components: {
-    commonList,
+    postList,
     topicInfo,
     loadMore,
   },

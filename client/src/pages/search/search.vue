@@ -41,7 +41,7 @@
     <!-- 搜索结果 -->
     <block v-else v-for="(item, index) in dataList" :key="index">
       <template v-if="type === 'post'">
-        <common-list :item="item" :index="index"></common-list>
+        <post-list :item="item" :index="index"></post-list>
         <view class="divider"></view>
       </template>
       <template v-else-if="type === 'topic'">
@@ -168,13 +168,13 @@ const demo = {
     },
   ],
 }
-import commonList from '@/components/common/common-list'
+import postList from '@/components/common/post-list'
 import topicList from '@/components/common/topic-list'
 import userList from '@/components/common/user-list'
 
 export default {
   components: {
-    commonList,
+    postList,
     topicList,
     userList,
   },

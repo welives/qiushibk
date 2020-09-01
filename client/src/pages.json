@@ -115,7 +115,7 @@
               "align": "center",
               "backgroundColor": "#f5f4f2",
               "borderRadius": "4px",
-              "placeholder": "输入搜索关键词",
+              "placeholder": "搜索",
               "placeholderColor": "#6d6c67"
             },
             "buttons": [

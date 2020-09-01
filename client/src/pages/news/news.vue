@@ -34,7 +34,7 @@
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore">
           <template v-if="dataList.length > 0">
             <block v-for="(item, index) in dataList" :key="index">
-              <common-list :item="item" :index="index" @follow="follow" @support="support"></common-list>
+              <post-list :item="item" :index="index" @follow="follow" @support="support"></post-list>
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
@@ -131,7 +131,7 @@ const demo = [
 ]
 import common from '@/common/mixins/common'
 import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
-import commonList from '@/components/common/common-list'
+import postList from '@/components/common/post-list'
 import loadMore from '@/components/common/load-more'
 import hotCate from '@/components/common/hot-cate'
 import topicList from '@/components/common/topic-list'
@@ -139,7 +139,7 @@ import topicList from '@/components/common/topic-list'
 export default {
   components: {
     uniNavBar,
-    commonList,
+    postList,
     loadMore,
     hotCate,
     topicList,

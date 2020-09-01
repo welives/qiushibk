@@ -56,7 +56,7 @@
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore(index)">
           <template v-if="item.list.length > 0">
             <block v-for="(list, idx) in item.list" :key="idx">
-              <common-list :item="list" :index="idx" @follow="follow" @support="support"></common-list>
+              <post-list :item="list" :index="idx" @follow="follow" @support="support"></post-list>
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
@@ -122,12 +122,12 @@ const demo = [
   },
 ]
 import common from '@/common/mixins/common'
-import commonList from '@/components/common/common-list'
+import postList from '@/components/common/post-list'
 import loadMore from '@/components/common/load-more'
 
 export default {
   components: {
-    commonList,
+    postList,
     loadMore,
   },
   mixins: [common],
