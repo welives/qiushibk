@@ -8,7 +8,7 @@
         type="text"
         class="flex-fill rounded ml-2 px-2"
         style="background-color: #f5f4f2; height: 80%;"
-        :placeholder="'\ue606 输入搜索关键词'"
+        :placeholder="placeholder"
         placeholder-class="iconfont text-center font"
         placeholder-style="color: #6d6c67;"
       />
@@ -40,69 +40,148 @@
 
     <!-- 搜索结果 -->
     <block v-else v-for="(item, index) in dataList" :key="index">
-      <common-list :item="item" :index="index"></common-list>
-      <view class="divider"></view>
+      <template v-if="type === 'post'">
+        <common-list :item="item" :index="index"></common-list>
+        <view class="divider"></view>
+      </template>
+      <template v-else-if="type === 'topic'">
+        <topic-list :item="item" :index="index"></topic-list>
+      </template>
+      <template v-else-if="type === 'user'">
+        <user-list :item="item" :index="index"></user-list>
+      </template>
     </block>
   </view>
 </template>
 
 <script>
-const demo = [
-  {
-    username: '煎蛋',
-    avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
-    isFollow: false,
-    title: '测试标题',
-    cover: '/static/demo/datapic/11.jpg',
-    support: {
-      type: 'praise',
-      praise_count: 10,
-      blame_count: 10,
+// 测试数据
+const demo = {
+  // 帖子
+  post: [
+    {
+      username: '煎蛋',
+      avatar: '/static/default.jpg',
+      created_at: '2020-08-28 19:36',
+      isFollow: false,
+      title: '测试标题',
+      cover: '/static/demo/datapic/11.jpg',
+      support: {
+        type: 'praise',
+        praise_count: 10,
+        blame_count: 10,
+      },
+      comment_count: 0,
+      share_count: 0,
     },
-    comment_count: 0,
-    share_count: 0,
-  },
-  {
-    username: '咸鱼',
-    avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
-    isFollow: true,
-    title: '测试标题',
-    cover: '/static/demo/datapic/12.jpg',
-    support: {
-      type: 'blame',
-      praise_count: 10,
-      blame_count: 10,
+    {
+      username: '咸鱼',
+      avatar: '/static/default.jpg',
+      created_at: '2020-08-28 19:36',
+      isFollow: true,
+      title: '测试标题',
+      cover: '/static/demo/datapic/12.jpg',
+      support: {
+        type: 'blame',
+        praise_count: 10,
+        blame_count: 10,
+      },
+      comment_count: 0,
+      share_count: 0,
     },
-    comment_count: 0,
-    share_count: 0,
-  },
-  {
-    username: '绿师',
-    avatar: '/static/default.jpg',
-    created_at: '2020-08-28 19:36',
-    isFollow: true,
-    title: '测试标题',
-    cover: '/static/demo/datapic/2.jpg',
-    support: {
-      type: '',
-      praise_count: 0,
-      blame_count: 0,
+    {
+      username: '绿师',
+      avatar: '/static/default.jpg',
+      created_at: '2020-08-28 19:36',
+      isFollow: true,
+      title: '测试标题',
+      cover: '/static/demo/datapic/2.jpg',
+      support: {
+        type: '',
+        praise_count: 0,
+        blame_count: 0,
+      },
+      comment_count: 0,
+      share_count: 0,
     },
-    comment_count: 0,
-    share_count: 0,
-  },
-]
+  ],
+  // 话题
+  topic: [
+    {
+      cover: '/static/demo/topicpic/1.jpeg',
+      title: '话题名称1',
+      desc: '话题描述1',
+      news_count: 10,
+      today_count: 10,
+    },
+    {
+      cover: '/static/demo/topicpic/2.jpeg',
+      title: '话题名称2',
+      desc: '话题描述2',
+      news_count: 10,
+      today_count: 10,
+    },
+    {
+      cover: '/static/demo/topicpic/3.jpeg',
+      title: '话题名称3',
+      desc: '话题描述3',
+      news_count: 10,
+      today_count: 10,
+    },
+    {
+      cover: '/static/demo/topicpic/4.jpeg',
+      title: '话题名称4',
+      desc: '话题描述4',
+      news_count: 10,
+      today_count: 10,
+    },
+  ],
+  // 用户
+  user: [
+    {
+      avatar: '/static/default.jpg',
+      username: '靓女',
+      sex: 2, // 0保密, 1男, 2女
+      age: 18,
+      isFollow: true,
+    },
+    {
+      avatar: '/static/default.jpg',
+      username: '靓仔',
+      sex: 1,
+      age: 23,
+      isFollow: false,
+    },
+    {
+      avatar: '/static/default.jpg',
+      username: '煎蛋',
+      sex: 0,
+      age: 30,
+      isFollow: true,
+    },
+    {
+      avatar: '/static/default.jpg',
+      username: '川普',
+      sex: 1,
+      age: 66,
+      isFollow: false,
+    },
+  ],
+}
 import commonList from '@/components/common/common-list'
+import topicList from '@/components/common/topic-list'
+import userList from '@/components/common/user-list'
 
 export default {
   components: {
     commonList,
+    topicList,
+    userList,
   },
   data() {
     return {
       scrollHeight: 600,
+      placeholder: '',
       // 关键字
       keyword: '',
       // 搜索历史
@@ -128,11 +207,38 @@ export default {
       ],
       // 搜索结果
       dataList: [],
+      // 当前搜索类型
+      type: 'post',
     }
   },
-  onLoad() {
+  onLoad(e) {
     const res = uni.getSystemInfoSync()
     this.scrollHeight = res.windowHeight
+    // 修改搜索框占位符
+    e.type && (this.type = e.type)
+    switch (this.type) {
+      case 'post':
+        this.placeholder = '帖子'
+        break
+      case 'topic':
+        this.placeholder = '话题'
+        break
+      case 'user':
+        this.placeholder = '用户'
+        break
+    }
+    // #ifdef MP
+    this.placeholder = '\ue606 搜索' + this.placeholder
+    // #endif
+
+    // #ifdef APP-PLUS
+    const page = this.$scope.$getAppWebview()
+    const tn = page.getStyle().titleNView
+    tn.searchInput.placeholder = '搜索' + this.placeholder
+    page.setStyle({
+      titleNView: tn,
+    })
+    // #endif
   },
   onNavigationBarButtonTap(e) {
     e.index === 0 && this.search()
@@ -159,7 +265,7 @@ export default {
       // 搜索请求
       uni.showLoading({ title: '加载中' })
       setTimeout(() => {
-        this.dataList = demo.map((v) => {
+        this.dataList = demo[this.type].map((v) => {
           return { ...v }
         })
         uni.hideLoading()

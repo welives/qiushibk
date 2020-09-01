@@ -4,10 +4,12 @@
     {
       "path": "pages/index/index",
       "style": {
+        "enablePullDownRefresh": true,
         "navigationBarTitleText": "首页",
         "app-plus": {
           // 取消iOS端软键盘上方横条
           "scrollIndicator": "none",
+          "bounce": "none",
           "titleNView": {
             "searchInput": {
               "align": "center",
@@ -15,7 +17,7 @@
               "borderRadius": "4px",
               // 原生导航栏上的搜索框禁止输入
               "disabled": true,
-              "placeholder": "搜索帖子",
+              "placeholder": "搜索",
               "placeholderColor": "#6d6c67"
             },
             "buttons": [
@@ -37,8 +39,12 @@
     {
       "path": "pages/news/news",
       "style": {
+        "enablePullDownRefresh": true,
         // 启用自定义导航
-        "navigationStyle": "custom"
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none"
+        }
       }
     },
     // 消息列表页
@@ -52,6 +58,7 @@
         // 开启下来刷新
         "enablePullDownRefresh": true,
         "app-plus": {
+          "bounce": "none",
           "titleNView": {
             "buttons": [
               {
@@ -81,8 +88,10 @@
     {
       "path": "pages/mine/mine",
       "style": {
+        "enablePullDownRefresh": true,
         "navigationBarTitleText": "个人中心",
         "app-plus": {
+          "bounce": "none",
           "titleNView": {
             "buttons": [
               {
@@ -99,6 +108,7 @@
       "style": {
         "navigationBarTitleText": "搜索",
         "app-plus": {
+          "bounce": "none",
           "softinputNavBar": "none",
           "titleNView": {
             "searchInput": {
@@ -129,6 +139,7 @@
         "navigationStyle": "custom",
         "navigationBarTitleText": "发帖",
         "app-plus": {
+          "bounce": "none",
           "animationType": "slide-in-left",
           "softinputNavBar": "none"
         }
@@ -138,7 +149,10 @@
     {
       "path": "pages/topic-nav/topic-nav",
       "style": {
-        "navigationBarTitleText": "话题分类"
+        "navigationBarTitleText": "话题分类",
+        "app-plus": {
+          "bounce": "none"
+        }
       }
     },
     // 话题详情页
@@ -147,6 +161,7 @@
       "style": {
         "navigationBarTitleText": "话题详情",
         "app-plus": {
+          "bounce": "none",
           "titleNView": {
             "type": "transparent",
             "buttons": [
@@ -166,6 +181,7 @@
         "app-plus": {
           // 进入页面时的动画效果
           "animationType": "slide-in-left",
+          "bounce": "none",
           "titleNView": {
             // 隐藏左侧返回按钮
             "autoBackButton": false,
@@ -188,6 +204,31 @@
                 "width": "44px"
               }
               // #endif
+            ]
+          }
+        }
+      }
+    },
+    // 聊天页
+    {
+      "path": "pages/user-chat/user-chat",
+      "style": {
+        "navigationBarTitleText": "聊天页",
+        "app-plus": {
+          "softinputNavBar": "none",
+          // 关闭页面回弹效果
+          "bounce": "none",
+          "titleNView": {
+            "buttons": [
+              {
+                "color": "#333333",
+                "colorPressed": "#fd597c",
+                "float": "right",
+                "fontSize": "20px",
+                "fontSrc": "/static/iconfont.ttf",
+                "text": "\ue628",
+                "width": "44px"
+              }
             ]
           }
         }

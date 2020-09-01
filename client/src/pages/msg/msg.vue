@@ -67,7 +67,7 @@ const demo = [
     avatar: '/static/default.jpg',
     username: '煎蛋',
     created_at: '1591851583',
-    content: '内容内容内容内容内容内容内容内容内',
+    content: '人类的本质是复读机! 咕咕咕! 奶子!!!',
     unread: 1,
     isRead: true,
   },
@@ -121,11 +121,16 @@ export default {
     this.scrollHeight = res.windowHeight
     this.initData()
   },
+  // 监听刷新事件
   onPullDownRefresh() {
     setTimeout(() => {
       uni.stopPullDownRefresh()
       this.initData()
     }, 500)
+  },
+  // 监听底部原生tabbar点击事件
+  onTabItemTap() {
+    this.doRefresh()
   },
   onReachBottom() {
     if (this.load.type !== 2) {
@@ -160,7 +165,7 @@ export default {
     toggle(e) {
       switch (e) {
         case 'friend':
-          console.log('添加好友')
+          this.navigateTo('search', 'type=user')
           break
         case 'clear':
           console.log('清空列表')

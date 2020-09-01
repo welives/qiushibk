@@ -98,9 +98,7 @@ export default {
     this.initData()
   },
   onNavigationBarSearchInputClicked() {
-    uni.navigateTo({
-      url: '../search/search',
-    })
+    this.navigateTo('search', 'type=user')
   },
   onNavigationBarButtonTap(e) {
     uni.navigateBack({ delta: 1 })

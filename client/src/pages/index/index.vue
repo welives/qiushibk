@@ -191,11 +191,23 @@ export default {
     // #endif
     this.initData()
   },
+  // 原生导航栏输入框点击事件
   onNavigationBarSearchInputClicked(e) {
-    this.navigateTo('search')
+    this.navigateTo('search', 'type=post')
   },
+  // 原生导航栏按钮点击事件
   onNavigationBarButtonTap(e) {
     e.index === 0 && this.navigateTo('add-posts')
+  },
+  // 监听刷新事件
+  onPullDownRefresh() {
+    setTimeout(() => {
+      uni.stopPullDownRefresh()
+    }, 1000)
+  },
+  // 监听底部原生tabbar点击事件
+  onTabItemTap() {
+    this.doRefresh()
   },
   methods: {
     // 初始化数据

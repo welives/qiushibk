@@ -19,6 +19,7 @@ export default {
     index: Number,
   },
   methods: {
+    // 打开话题详情页
     open() {
       uni.navigateTo({
         url: '../../pages/topic-detail/topic-detail?detail=' + encodeURIComponent(JSON.stringify(this.item)),

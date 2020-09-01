@@ -8,7 +8,7 @@
     "
     :style="badgeStyle"
     class="uni-badge"
-    @click="onClick()"
+    @click.stop="onClick()"
     ><slot></slot>{{ text }}
   </view>
 </template>

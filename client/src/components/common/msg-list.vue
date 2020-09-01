@@ -1,5 +1,5 @@
 <template>
-  <view class="px-2">
+  <view class="px-2" @click.stop="open">
     <view class="flex align-center py-2 border-bottom border-light-secondary">
       <image class="rounded-circle flex-shrink-0" style="width: 80rpx; height: 80rpx;" :src="item.avatar" />
       <view class="ml-2 flex-fill flex flex-column" style="line-height: 1.5;">
@@ -27,6 +27,14 @@ export default {
   props: {
     item: Object,
     index: Number,
+  },
+  methods: {
+    // 打开聊天页
+    open() {
+      uni.navigateTo({
+        url: '../../pages/user-chat/user-chat',
+      })
+    },
   },
 }
 </script>

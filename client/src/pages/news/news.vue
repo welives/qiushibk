@@ -54,7 +54,10 @@
           <hot-cate :hotCate="hotCate"></hot-cate>
           <!-- 搜索框 -->
           <view class="px-2 my-2">
-            <view class="bg-light rounded py-1 flex align-center justify-center text-secondary">
+            <view
+              class="bg-light rounded py-1 flex align-center justify-center text-secondary"
+              @click.stop="navigateTo('search', 'type=topic')"
+            >
               <text class="iconfont icon-sousuo"></text>
               <text class="ml-2">搜索话题</text>
             </view>
@@ -224,6 +227,16 @@ export default {
     const res = uni.getSystemInfoSync()
     this.scrollHeight = res.windowHeight - res.statusBarHeight - 44
     this.initData()
+  },
+  // 监听刷新事件
+  onPullDownRefresh() {
+    setTimeout(() => {
+      uni.stopPullDownRefresh()
+    }, 1000)
+  },
+  // 监听底部原生tabbar点击事件
+  onTabItemTap() {
+    this.doRefresh()
   },
   methods: {
     initData() {

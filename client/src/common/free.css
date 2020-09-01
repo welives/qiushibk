@@ -666,6 +666,13 @@
   lines: 1;
   /* #endif */
 }
+.text-wrap {
+  /* #ifndef MP */
+  word-break: break-all;
+  /* #endif */
+  word-wrap: break-word;
+}
+
 /* 文字粗细和斜体 */
 .font-weight-thin {
   /*细*/
