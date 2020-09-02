@@ -71,6 +71,7 @@ export default {
     this.image = ''
   },
   created() {
+    // 获取服务供应商
     uni.getProvider({
       service: 'share',
       success: (e) => {

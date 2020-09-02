@@ -4,7 +4,7 @@
     <!-- 微信小程序端生效 -->
     <!-- 自定义导航 开始 -->
     <uni-nav-bar :border="false" statusBar fixed @clickLeft="toFriendList">
-      <text slot="left" class="w-100 text-center iconfont icon-haoyou font-lg"></text>
+      <view slot="left" class="px-3 text-center iconfont icon-haoyou font-lg"></view>
       <view class="flex align-center justify-center w-100">
         <text class="font">消息</text>
         <view class="px-2 text-center iconfont icon-caidan font-lg" @click.stop="openPopup"></view>

@@ -1,5 +1,22 @@
 <template>
   <view>
+    <!-- #ifdef MP -->
+    <!-- 微信小程序端生效 -->
+    <!-- 自定义导航栏 开始 -->
+    <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back">
+      <view class="flex align-center w-100" style="margin-left: -30px;">
+        <view
+          class="flex-fill text-center text-secondary py-1 bg-light rounded"
+          @click.stop="navigateTo('search', 'type=user')"
+        >
+          <text class="iconfont icon-sousuo"></text>
+          <text class="ml-1">搜索用户</text>
+        </view>
+      </view>
+    </uni-nav-bar>
+    <!-- 自定义导航栏 结束 -->
+    <!-- #endif -->
+
     <!-- 选项卡 开始 -->
     <view class="flex align-center w-100" style="height: 40px;">
       <block v-for="(item, index) in tabBars" :key="index">
@@ -71,12 +88,14 @@ import common from '@/common/mixins/common'
 import userList from '@/components/common/user-list'
 import loadMore from '@/components/common/load-more'
 import uniBadge from '@/components/uni-ui/uni-badge/uni-badge'
+import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
 
 export default {
   components: {
     userList,
     loadMore,
     uniBadge,
+    uniNavBar,
   },
   mixins: [common],
   data() {

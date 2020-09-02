@@ -1,13 +1,13 @@
 <template>
   <view>
     <!-- 帖子内容 开始 -->
-    <post-list :item="detail" isDetail @comment="doComment" @follow="doFollow" @support="doSupport">
+    <post-list :item="detail" isDetail @comment="doComment" @follow="doFollow" @support="doSupport" @share="doShare">
       <view class="py-1">{{ detail.content }}</view>
-      <block v-for="(item, index) in detail.imageList" :key="index">
+      <block v-for="(item, index) in imageList" :key="index">
         <image
           class="rounded w-100"
           style="height: 350rpx;"
-          :src="item.url"
+          :src="item"
           mode="aspectFill"
           @click.stop="preview(index)"
         />
@@ -20,12 +20,7 @@
     <view class="p-2 font-md font-weight-bold">最新评论</view>
     <view class="uni-comment-list px-2">
       <view class="uni-comment-face">
-        <image
-          class="rounded-circle"
-          style="width: 80rpx; height: 80rpx;"
-          src="/static/default.jpg"
-          mode="aspectFill"
-        />
+        <image style="width: 80rpx; height: 80rpx;" src="/static/default.jpg" mode="aspectFill" />
       </view>
       <view class="uni-comment-body">
         <view class="uni-comment-top"><text>小猫咪</text></view>
@@ -76,7 +71,7 @@ export default {
   },
   computed: {
     imageList() {
-      return this.detail.imageList.map((v) => v.url)
+      return this.detail.imageList ? this.detail.imageList.map((v) => v.url) : []
     },
   },
   onLoad(e) {
@@ -88,17 +83,17 @@ export default {
     })
     this.initData()
   },
-  // #ifndef H5
   onNavigationBarButtonTap(e) {
     this.$refs.share.open()
   },
   onBackPress() {
     this.$refs.share.close()
   },
-  // #endif
   methods: {
     initData() {
-      this.detail.imageList = demo
+      this.detail.imageList = demo.map((v) => {
+        return { ...v }
+      })
     },
     // 打开评论
     doComment() {},
@@ -144,6 +139,10 @@ export default {
         current: index,
         urls: this.imageList,
       })
+    },
+    // 分享
+    doShare() {
+      this.$refs.share.open()
     },
   },
 }

@@ -9,7 +9,7 @@
       @clickRight="navigateTo('add-posts')"
     >
       <!-- #ifdef MP -->
-      <text slot="left" class="px-3 iconfont icon-fatie_icon font-lg"></text>
+      <view slot="left" class="px-3 text-center iconfont icon-fatie_icon font-lg"></view>
       <!-- #endif -->
       <view class="flex align-center justify-center font-weight-bold w-100">
         <block v-for="(item, index) in tabBars" :key="index">
@@ -55,11 +55,11 @@
           <!-- 搜索框 -->
           <view class="px-2 my-2">
             <view
-              class="bg-light rounded py-1 flex align-center justify-center text-secondary"
+              class="bg-light rounded py-1 text-center text-secondary"
               @click.stop="navigateTo('search', 'type=topic')"
             >
               <text class="iconfont icon-sousuo"></text>
-              <text class="ml-2">搜索话题</text>
+              <text class="ml-1">搜索话题</text>
             </view>
           </view>
           <!-- 轮播图 -->

@@ -4,6 +4,9 @@
     {
       "path": "pages/index/index",
       "style": {
+        // #ifdef MP
+        "navigationStyle": "custom",
+        // #endif
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "首页",
         "app-plus": {
@@ -180,6 +183,9 @@
     {
       "path": "pages/friend-list/friend-list",
       "style": {
+        // #ifdef MP
+        "navigationStyle": "custom",
+        // #endif
         "navigationBarTitleText": "好友列表",
         "app-plus": {
           // 进入页面时的动画效果
@@ -248,11 +254,13 @@
           "bounce": "none",
           "titleNView": {
             "buttons": [
+              // #ifdef APP-PLUS
               {
-                "type": "menu",
+                "type": "share",
                 "float": "right",
                 "width": "44px"
               }
+              // #endif
             ]
           }
         }

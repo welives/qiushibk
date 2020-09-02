@@ -3,24 +3,18 @@
     <!-- #ifdef MP -->
     <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
-    <view class="fixed-top bg-white flex align-center justify-between w-100" style="height: 40px;">
-      <view
-        class="flex-fill flex align-center justify-center rounded ml-1"
-        style="background-color: #f5f4f2;color: #6d6c67;"
-        @click.stop="navigateTo('search')"
-      >
-        <text class="iconfont icon-sousuo font-md"></text>
-        <text class="ml-1">搜索帖子</text>
+    <uni-nav-bar :border="false" fixed statusBar @clickLeft="navigateTo('add-posts')">
+      <view slot="left" class="px-3 iconfont icon-fatie_icon font-lg"></view>
+      <view class="flex align-center w-100" style="margin-left: -30px;">
+        <view
+          class="flex-fill text-center text-secondary py-1 bg-light rounded"
+          @click.stop="navigateTo('search', 'type=post')"
+        >
+          <text class="iconfont icon-sousuo"></text>
+          <text class="ml-1">搜索帖子</text>
+        </view>
       </view>
-      <view
-        class="flex-shrink-0 text-center mx-1"
-        style="width: 44px;color: #333333;"
-        @click.stop="navigateTo('add-posts')"
-      >
-        <text class="iconfont font-lg">&#xe668;</text>
-      </view>
-    </view>
-    <view style="height: 40px;"></view>
+    </uni-nav-bar>
     <!-- 自定义导航栏 结束 -->
     <!-- #endif -->
 
@@ -127,11 +121,13 @@ const demo = [
 import common from '@/common/mixins/common'
 import postList from '@/components/common/post-list'
 import loadMore from '@/components/common/load-more'
+import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
 
 export default {
   components: {
     postList,
     loadMore,
+    uniNavBar,
   },
   mixins: [common],
   data() {
@@ -185,7 +181,7 @@ export default {
     const res = uni.getSystemInfoSync()
     // #ifdef MP
     // 微信小程序端生效 内容区高度 = 可用高度 - 自定义导航栏 - 选项卡
-    this.scrollHeight = res.windowHeight - 40 - 40
+    this.scrollHeight = res.windowHeight - 64 - 40
     // #endif
 
     // #ifndef MP
@@ -223,7 +219,6 @@ export default {
           arr.push({ list: [] })
         }
       })
-
       this.dataList = arr
     },
     // scroll-view组件触底事件

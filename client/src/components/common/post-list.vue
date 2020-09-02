@@ -15,7 +15,7 @@
         <!-- 昵称 | 发布时间 -->
         <view class="flex-fill flex flex-column line-h px-2">
           <view class="font">{{ item.username }}</view>
-          <text class="text-light-muted font-small">{{ item.created_at | formatTime }}</text>
+          <text class="text-light-muted font-small">{{ item.created_at || 0 | formatTime }}</text>
         </view>
       </view>
       <!-- 关注按钮 -->
@@ -120,7 +120,9 @@ export default {
       this.openDetail()
       this.isDetail && this.$emit('comment')
     },
-    onShare() {},
+    onShare() {
+      this.$emit('share')
+    },
   },
 }
 </script>
