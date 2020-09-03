@@ -331,6 +331,7 @@
         "navigationStyle": "custom",
         "navigationBarTitleText": "登入页",
         "app-plus": {
+          "bounce": "none",
           "softinputNavBar": "none"
         }
       }

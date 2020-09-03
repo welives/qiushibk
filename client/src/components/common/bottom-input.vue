@@ -5,7 +5,6 @@
   >
     <view class="flex-fill flex align-center rounded" style="height: 40px; ">
       <input
-        type="text"
         class="px-2 w-100 bg-light rounded"
         style="height: 100%;"
         placeholder="文明发言"

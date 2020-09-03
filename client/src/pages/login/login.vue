@@ -1,52 +1,55 @@
 <template>
   <view>
     <!-- 顶部关闭按钮 开始 -->
-    <view :style="'height:' + statusBarHeight + 'px;'"></view>
     <view
-      class="flex align-center justify-center animate__animated"
+      class="fixed-top left-0 flex align-center justify-center animate__animated"
       hover-class="text-main animate__pulse"
       style="width: 80rpx; height: 80rpx;"
+      :style="'top: ' + statusBarHeight + 'px;'"
       @click.stop="back()"
     >
       <text class="iconfont icon-guanbi font-lg"></text>
     </view>
     <!-- 顶部关闭按钮 结束 -->
 
+    <view class="flex align-center justify-center font-lg font-weight-bold" style="padding: 100rpx 0 80rpx;"
+      >欢迎回来</view
+    >
     <!-- 表单 开始 -->
-    <view class="flex align-center justify-center font-lg font-weight-bold my-5">欢迎回来</view>
     <view class="p-2">
       <input
-        type="text"
-        class="font bg-light rounded px-2 my-3"
+        class="bg-light rounded px-2 my-3"
         style="height: 80rpx;"
         placeholder="手机号/用户名/邮箱"
-        placeholder-class="text-light-muted"
+        placeholder-class="text-light-muted font"
         v-model="form.username"
       />
       <input
-        type="password"
-        class="font bg-light rounded px-2 my-3"
+        class="bg-light rounded px-2 my-3"
         style="height: 80rpx;"
         placeholder="请输入密码"
-        placeholder-class="text-light-muted"
+        placeholder-class="text-light-muted font"
+        :password="true"
         v-model="form.password"
       />
       <input
         v-if="type === 'reg'"
-        type="password"
-        class="font bg-light rounded px-2 my-3"
+        class="bg-light rounded px-2 my-3"
         style="height: 80rpx;"
         placeholder="请输入确认密码"
-        placeholder-class="text-light-muted"
+        placeholder-class="text-light-muted font"
+        :password="true"
         v-model="form.repassword"
       />
     </view>
-    <view class="px-3">
+    <view class="px-4">
       <button
         type="primary"
-        class="border-0 bg-main text-white"
+        class="border-0 text-white"
         style="border-radius: 50rpx; letter-spacing: 6rpx;"
-        @click.stop="navigateTo('login')"
+        :class="disabled ? 'bg-disabled-main' : 'bg-main'"
+        :disabled="disabled"
+        @click.stop="submit()"
       >
         {{ type === 'login' ? '登入' : '注册' }}
       </button>
@@ -71,7 +74,8 @@
     <view class="flex px-2 text-white">
       <view class="flex-fill flex align-center justify-center">
         <view
-          class="rounded-circle bg-success flex align-center justify-center"
+          class="rounded-circle bg-success flex align-center justify-center animate__animated"
+          hover-class="animate__pulse"
           style="width: 100rpx; height: 100rpx;"
           @click="socialLogin('wechat')"
         >
@@ -80,7 +84,8 @@
       </view>
       <view class="flex-fill flex align-center justify-center">
         <view
-          class="rounded-circle bg-primary flex align-center justify-center"
+          class="rounded-circle bg-primary flex align-center justify-center animate__animated"
+          hover-class="animate__pulse"
           style="width: 100rpx; height: 100rpx;"
           @click="socialLogin('qq')"
         >
@@ -89,7 +94,8 @@
       </view>
       <view class="flex-fill flex align-center justify-center">
         <view
-          class="rounded-circle bg-danger flex align-center justify-center"
+          class="rounded-circle bg-danger flex align-center justify-center animate__animated"
+          hover-class="animate__pulse"
           style="width: 100rpx; height: 100rpx;"
           @click="socialLogin('sina')"
         >
@@ -113,10 +119,21 @@ export default {
       form: { username: '', password: '', repassword: '' },
     }
   },
+  computed: {
+    disabled() {
+      if (this.type === 'reg') {
+        return !this.form.username || !this.form.password || !this.form.repassword
+      } else {
+        return !this.form.username || !this.form.password
+      }
+    },
+  },
   onLoad() {
-    this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight
+    const res = uni.getSystemInfoSync()
+    this.statusBarHeight = res.statusBarHeight
   },
   methods: {
+    // 切换表单
     changeType() {
       this.type = this.type === 'login' ? 'reg' : 'login'
       this.form = { username: '', password: '', repassword: '' }
@@ -124,6 +141,41 @@ export default {
     // 第三方登入
     socialLogin(type) {
       console.log(type)
+    },
+    // 验证
+    check() {
+      if (this.type === 'reg') {
+        if (this.form.password !== this.form.repassword) {
+          uni.showToast({
+            title: '两次输入的密码不一致',
+            icon: 'none',
+          })
+          return false
+        }
+      } else {
+      }
+      return true
+    },
+    // 注册||登入
+    submit() {
+      if (!this.check()) return
+      let msg = this.type === 'reg' ? '注册' : '登入'
+      uni.showToast({
+        title: msg + '成功',
+        icon: 'none',
+      })
+      // this.$req.post('/' + this.type, this.form).then((res) => {
+      //   if (this.type === 'reg') {
+      //     this.changeType()
+      //   } else {
+      //     this.$store.dispatch('user/login', res)
+      //     this.back()
+      //   }
+      //   uni.showToast({
+      //     title: msg + '成功',
+      //     icon: 'none',
+      //   })
+      // })
     },
   },
 }

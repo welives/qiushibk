@@ -4,7 +4,6 @@
       <input
         class="rounded bg-light px-2 my-3"
         style="height: 80rpx;"
-        type="text"
         placeholder="请输入您要绑定的邮箱"
         placeholder-class="text-light-muted"
         v-model="email"

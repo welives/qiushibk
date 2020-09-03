@@ -4,7 +4,7 @@
       <input
         class="rounded bg-light px-2 my-3"
         style="height: 80rpx;"
-        type="password"
+        :password="true"
         placeholder="输入旧密码"
         placeholder-class="text-light-muted"
         v-model="old_password"
@@ -12,7 +12,7 @@
       <input
         class="rounded bg-light px-2 my-3"
         style="height: 80rpx;"
-        type="password"
+        :password="true"
         placeholder="输入新密码"
         placeholder-class="text-light-muted"
         v-model="new_password"
@@ -20,7 +20,7 @@
       <input
         class="rounded bg-light px-2 my-3"
         style="height: 80rpx;"
-        type="password"
+        :password="true"
         placeholder="确认新密码"
         placeholder-class="text-light-muted"
         v-model="re_newpass"

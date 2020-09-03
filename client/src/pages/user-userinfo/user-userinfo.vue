@@ -9,7 +9,6 @@
     <uni-list-item title="昵称" :showArrow="false" @click="userInfo.name.isEdit = true">
       <view slot="right" class="flex align-center">
         <input
-          type="text"
           class="rounded mr-2 font"
           :class="userInfo.name.isEdit ? 'bg-light ' : 'text-right'"
           style="height: 60rpx;"
@@ -43,7 +42,6 @@
     <uni-list-item title="职业" :showArrow="false" @click="userInfo.job.isEdit = true">
       <view slot="right" class="flex align-center">
         <input
-          type="text"
           class="rounded mr-2 font"
           :class="userInfo.job.isEdit ? 'bg-light ' : 'text-right'"
           style="height: 60rpx;"

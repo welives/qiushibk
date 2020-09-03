@@ -5,7 +5,6 @@
     <!-- 自定义导航栏 开始 -->
     <view class="fixed-top flex align-center justify-between w-100" style="height: 40px;">
       <input
-        type="text"
         class="flex-fill bg-light rounded ml-2 px-2"
         style="height: 80%;"
         placeholder-class="iconfont text-center text-light-muted"
