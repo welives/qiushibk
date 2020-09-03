@@ -12,7 +12,7 @@
   color: #ff4a6a !important;
 }
 .text-hover-main {
-  color: #fb85a7;
+  color: #fb85a7 !important;
 }
 
 /* 背景 */
@@ -20,7 +20,10 @@
   background-color: #ff4a6a !important;
 }
 .bg-hover-main {
-  background-color: #fb85a7;
+  background-color: #fb85a7 !important;
+}
+.bg-disabled-main {
+  background-color: #f89bad !important;
 }
 
 /* 边框 */

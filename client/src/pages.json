@@ -98,8 +98,12 @@
           "titleNView": {
             "buttons": [
               {
-                "type": "menu",
+                "color": "#333333",
+                "colorPressed": "#fd597c",
                 "float": "right",
+                "fontSize": "20px",
+                "fontSrc": "/static/iconfont.ttf",
+                "text": "\ue608",
                 "width": "44px"
               }
             ]
@@ -263,6 +267,44 @@
               // #endif
             ]
           }
+        }
+      }
+    },
+    // 设置页
+    {
+      "path": "pages/user-set/user-set",
+      "style": {
+        "navigationBarTitleText": "设置",
+        "app-plus": {}
+      }
+    },
+    // 修改密码
+    {
+      "path": "pages/user-password/user-password",
+      "style": {
+        "navigationBarTitleText": "修改密码",
+        "app-plus": {
+          "softinputNavBar": "none"
+        }
+      }
+    },
+    // 绑定邮箱
+    {
+      "path": "pages/user-email/user-email",
+      "style": {
+        "navigationBarTitleText": "绑定邮箱",
+        "app-plus": {
+          "softinputNavBar": "none"
+        }
+      }
+    },
+    // 资料编辑
+    {
+      "path": "pages/user-userinfo/user-userinfo",
+      "style": {
+        "navigationBarTitleText": "资料编辑",
+        "app-plus": {
+          "softinputNavBar": "none"
         }
       }
     }

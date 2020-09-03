@@ -1,0 +1,44 @@
+<template>
+  <view>
+    <uni-list-item title="账号与安全" :showExtraIcon="true" @click="navigateTo('user-password')">
+      <text slot="icon" class="iconfont icon-shezhi"></text>
+    </uni-list-item>
+    <uni-list-item title="绑定邮箱" :showExtraIcon="true" @click="navigateTo('user-email')">
+      <text slot="icon" class="uni-icon uni-icon-email font"></text>
+    </uni-list-item>
+    <uni-list-item title="资料编辑" :showExtraIcon="true" @click="navigateTo('user-userinfo')">
+      <text slot="icon" class="iconfont icon-bianji1"></text>
+    </uni-list-item>
+    <uni-list-item title="清除缓存" :showExtraIcon="true">
+      <text slot="icon" class="iconfont icon-qingchu"></text>
+    </uni-list-item>
+    <uni-list-item title="意见反馈" :showExtraIcon="true">
+      <text slot="icon" class="iconfont icon-guanyuwomen"></text>
+    </uni-list-item>
+    <uni-list-item title="关于社区" :showExtraIcon="true">
+      <text slot="icon" class="iconfont icon-yiwen"></text>
+    </uni-list-item>
+    <view class="px-3 py-2">
+      <button type="primary" class="border-0 bg-main text-white" style="border-radius: 50rpx; letter-spacing: 6rpx;">
+        退出登入
+      </button>
+    </view>
+  </view>
+</template>
+
+<script>
+import common from '@/common/mixins/common'
+import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item'
+export default {
+  components: {
+    uniListItem,
+  },
+  mixins: [common],
+  data() {
+    return {}
+  },
+  methods: {},
+}
+</script>
+
+<style scoped></style>
