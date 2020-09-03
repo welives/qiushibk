@@ -7,6 +7,7 @@
         style="width: 100rpx; height: 100rpx;"
         :src="userData.avatar"
         mode="aspectFill"
+        @click.stop="navigateTo('user-space')"
       />
       <view class="mx-2 flex-fill flex flex-column">
         <text class="font-md">{{ userData.name }}</text>

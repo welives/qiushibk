@@ -23,7 +23,7 @@
         <!-- 手机登入时才显示 -->
         <text
           v-if="formType === 'login' && phoneLogin"
-          class="flex align-center bg-light px-2 border-right"
+          class="flex-shrink-0 flex align-center bg-light px-2 border-right"
           style="height: 80rpx;"
           >+86</text
         >
@@ -36,7 +36,7 @@
         />
       </view>
       <!-- 手机登入验证码框 -->
-      <view v-if="formType === 'login' && phoneLogin" class="flex align-center position-relative my-3">
+      <view v-if="formType === 'login' && phoneLogin" class="flex align-center my-3">
         <input
           class="bg-light rounded px-2 flex-fill"
           style="height: 80rpx;"
@@ -46,7 +46,7 @@
           v-model="smscode"
         />
         <view
-          class="position-absolute right-0 rounded-right flex align-center justify-center"
+          class="rounded-right flex-shrink-0 flex align-center justify-center"
           :class="smsTime > 0 ? 'bg-disabled-main' : 'bg-main'"
           style="width: 160rpx; height: 80rpx;"
           @click.stop="getSmscode"
@@ -69,7 +69,8 @@
         <text
           v-if="formType === 'login' && !phoneLogin"
           class="bg-light position-absolute right-0 text-light-muted font-sm"
-          style="letter-spacing: 4rpx;"
+          style="letter-spacing: 4rpx; z-index: 100;"
+          @click.stop="forget"
           >忘记密码？</text
         >
       </view>
@@ -178,6 +179,7 @@ export default {
         return uni.showToast({
           title: '手机号码格式不正确',
           icon: 'none',
+          position: 'top',
         })
       }
       if (this.formType === 'login' && this.smsTime === 0) {
@@ -203,6 +205,7 @@ export default {
           uni.showToast({
             title: '两次输入的密码不一致',
             icon: 'none',
+            position: 'top',
           })
           return false
         }
@@ -225,6 +228,12 @@ export default {
       // 成功处理
       uni.showToast({
         title: msg + '成功',
+        icon: 'none',
+      })
+    },
+    forget() {
+      uni.showToast({
+        title: '忘记密码',
         icon: 'none',
       })
     },
