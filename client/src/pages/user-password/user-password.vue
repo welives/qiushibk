@@ -1,38 +1,32 @@
 <template>
   <view>
     <view class="p-2">
-      <view class="py-2">
-        <input
-          class="font rounded px-2 bg-light"
-          style="height: 80rpx;"
-          type="password"
-          placeholder="输入旧密码"
-          placeholder-class="text-light-muted"
-          v-model="old_password"
-        />
-      </view>
-      <view class="py-2">
-        <input
-          class="font rounded px-2 bg-light"
-          style="height: 80rpx;"
-          type="password"
-          placeholder="输入新密码"
-          placeholder-class="text-light-muted"
-          v-model="new_password"
-        />
-      </view>
-      <view class="py-2">
-        <input
-          class="font rounded px-2 bg-light"
-          style="height: 80rpx;"
-          type="password"
-          placeholder="确认新密码"
-          placeholder-class="text-light-muted"
-          v-model="re_newpass"
-        />
-      </view>
+      <input
+        class="rounded bg-light px-2 my-3"
+        style="height: 80rpx;"
+        type="password"
+        placeholder="输入旧密码"
+        placeholder-class="text-light-muted"
+        v-model="old_password"
+      />
+      <input
+        class="rounded bg-light px-2 my-3"
+        style="height: 80rpx;"
+        type="password"
+        placeholder="输入新密码"
+        placeholder-class="text-light-muted"
+        v-model="new_password"
+      />
+      <input
+        class="rounded bg-light px-2 my-3"
+        style="height: 80rpx;"
+        type="password"
+        placeholder="确认新密码"
+        placeholder-class="text-light-muted"
+        v-model="re_newpass"
+      />
     </view>
-    <view class="px-3 py-2">
+    <view class="px-4 py-2">
       <button
         type="primary"
         class="border-0 text-white"

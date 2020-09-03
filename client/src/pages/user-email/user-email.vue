@@ -1,18 +1,16 @@
 <template>
   <view>
     <view class="p-2">
-      <view class="py-2">
-        <input
-          class="font rounded px-2 bg-light"
-          style="height: 80rpx;"
-          type="text"
-          placeholder="请输入您要绑定的邮箱"
-          placeholder-class="text-light-muted"
-          v-model="email"
-        />
-      </view>
+      <input
+        class="rounded bg-light px-2 my-3"
+        style="height: 80rpx;"
+        type="text"
+        placeholder="请输入您要绑定的邮箱"
+        placeholder-class="text-light-muted"
+        v-model="email"
+      />
     </view>
-    <view class="px-3 py-2">
+    <view class="px-4 py-2">
       <button
         type="primary"
         class="border-0 text-white"

@@ -61,7 +61,7 @@
       </view>
     </uni-list-item>
 
-    <view class="px-3 py-2">
+    <view class="px-4 pt-5">
       <button
         type="primary"
         class="border-0 bg-main text-white"

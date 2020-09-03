@@ -3,10 +3,11 @@
     class="fixed-bottom flex align-center justify-between bg-white px-2 border-top border-light-secondary"
     style="height: 50px;"
   >
-    <view class="flex-fill py-1 rounded" style="background-color: rgba(0, 0, 0, 0.05);">
+    <view class="flex-fill flex align-center rounded" style="height: 40px; ">
       <input
         type="text"
-        class="px-2"
+        class="px-2 w-100 bg-light rounded"
+        style="height: 100%;"
         placeholder="文明发言"
         placeholder-class="text-light-muted"
         v-model="content"

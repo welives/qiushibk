@@ -12,14 +12,19 @@
     <uni-list-item title="清除缓存" :showExtraIcon="true">
       <text slot="icon" class="iconfont icon-qingchu"></text>
     </uni-list-item>
-    <uni-list-item title="意见反馈" :showExtraIcon="true">
+    <uni-list-item title="意见反馈" :showExtraIcon="true" @click="navigateTo('feedback')">
       <text slot="icon" class="iconfont icon-guanyuwomen"></text>
     </uni-list-item>
-    <uni-list-item title="关于社区" :showExtraIcon="true">
+    <uni-list-item title="关于社区" :showExtraIcon="true" @click="navigateTo('about')">
       <text slot="icon" class="iconfont icon-yiwen"></text>
     </uni-list-item>
-    <view class="px-3 py-2">
-      <button type="primary" class="border-0 bg-main text-white" style="border-radius: 50rpx; letter-spacing: 6rpx;">
+    <view class="px-4 pt-5">
+      <button
+        type="primary"
+        class="border-0 bg-main text-white"
+        style="border-radius: 50rpx; letter-spacing: 6rpx;"
+        @click.stop="navigateTo('login')"
+      >
         退出登入
       </button>
     </view>

@@ -3,14 +3,13 @@
     <!-- #ifdef MP -->
     <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
-    <view class="fixed-top bg-white flex align-center justify-between w-100" style="height: 40px;">
+    <view class="fixed-top flex align-center justify-between w-100" style="height: 40px;">
       <input
         type="text"
-        class="flex-fill rounded ml-2 px-2"
-        style="background-color: #f5f4f2; height: 80%;"
+        class="flex-fill bg-light rounded ml-2 px-2"
+        style="height: 80%;"
+        placeholder-class="iconfont text-center text-light-muted"
         :placeholder="placeholder"
-        placeholder-class="iconfont text-center font"
-        placeholder-style="color: #6d6c67;"
       />
       <view class="flex-shrink-0 text-center mx-1" style="width: 44px;color: #333333;">
         <text class="font">搜索</text>

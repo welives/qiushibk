@@ -3,7 +3,7 @@
     <!-- #ifdef MP -->
     <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
-    <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back">
+    <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back()">
       <view class="flex align-center w-100" style="margin-left: -30px;">
         <view
           class="flex-fill text-center text-secondary py-1 bg-light rounded"

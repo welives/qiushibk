@@ -1,7 +1,7 @@
 <template>
   <view @touchmove.stop.prevent="() => {}">
     <!-- 自定义导航栏 开始 -->
-    <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back">
+    <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back()">
       <view class="flex align-center justify-center w-100">
         <text class="mr-2 font">所有人可见</text>
         <text class="iconfont icon-shezhi"></text>

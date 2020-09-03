@@ -307,6 +307,33 @@
           "softinputNavBar": "none"
         }
       }
+    },
+    // 意见反馈
+    {
+      "path": "pages/feedback/feedback",
+      "style": {
+        "navigationBarTitleText": "意见反馈",
+        "app-plus": {}
+      }
+    },
+    // 关于社区
+    {
+      "path": "pages/about/about",
+      "style": {
+        "navigationBarTitleText": "关于社区",
+        "app-plus": {}
+      }
+    },
+    // 登入页
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登入页",
+        "app-plus": {
+          "softinputNavBar": "none"
+        }
+      }
     }
   ],
   "globalStyle": {
