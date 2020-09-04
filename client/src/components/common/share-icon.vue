@@ -3,7 +3,7 @@
     <uni-popup ref="popup" type="bottom">
       <view class="bg-white">
         <view class="text-center px-2 py-1 font">分享到</view>
-        <view class="flex align-center py-1">
+        <view v-if="providerList.length > 0" class="flex align-center py-3">
           <view
             class="flex-fill flex flex-column align-center justify-center"
             hover-class="bg-light"
@@ -22,8 +22,7 @@
             <text class="font-sm text-muted">{{ item.name }}</text>
           </view>
         </view>
-        <view class="border-bottom border-light-secondary"></view>
-        <view class="text-center p-2 font-md" hover-class="bg-light">取消</view>
+        <view class="border-top border-light-secondary text-center p-2 font" hover-class="bg-light">取消</view>
       </view>
     </uni-popup>
   </view>

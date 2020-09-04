@@ -1,9 +1,8 @@
 <template>
-  <view :style="'height:' + scrollHeight + 'px;'">
+  <view>
     <!-- #ifdef MP -->
-    <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
-    <view class="fixed-top flex align-center justify-between w-100" style="height: 40px;">
+    <view class="fixed-top flex align-center justify-between w-100" style="height: 80rpx;">
       <input
         class="flex-fill bg-light rounded ml-2 px-2"
         style="height: 80%;"
@@ -14,7 +13,7 @@
         <text class="font">搜索</text>
       </view>
     </view>
-    <view style="height: 40px;"></view>
+    <view style="height: 80rpx;"></view>
     <!-- 自定义导航栏 结束 -->
     <!-- #endif -->
 
@@ -181,7 +180,6 @@ export default {
   },
   data() {
     return {
-      scrollHeight: 600,
       placeholder: '',
       // 关键字
       keyword: '',
@@ -213,8 +211,6 @@ export default {
     }
   },
   onLoad(e) {
-    const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight
     // 修改搜索框占位符
     e.type && (this.type = e.type)
     switch (this.type) {

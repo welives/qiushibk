@@ -1,7 +1,6 @@
 <template>
   <view>
     <!-- #ifdef MP -->
-    <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
     <uni-nav-bar left-icon="back" :border="false" fixed statusBar @clickLeft="back()">
       <view class="flex align-center w-100" style="margin-left: -30px;">
@@ -18,7 +17,7 @@
     <!-- #endif -->
 
     <!-- 选项卡 开始 -->
-    <view class="flex align-center w-100" style="height: 40px;">
+    <view class="flex align-center w-100" style="height: 80rpx;">
       <block v-for="(item, index) in tabBars" :key="index">
         <view
           class="flex-fill text-center font-weight-bold"
@@ -113,7 +112,7 @@ export default {
   computed: {},
   onLoad() {
     const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - 40
+    this.scrollHeight = res.windowHeight - uni.upx2px(80)
     this.initData()
   },
   onNavigationBarSearchInputClicked() {

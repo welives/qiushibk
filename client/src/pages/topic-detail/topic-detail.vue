@@ -16,7 +16,7 @@
     <!-- 热门帖子 结束 -->
 
     <!-- 选项卡 开始 -->
-    <view class="flex align-center w-100" style="height: 40px;">
+    <view class="flex align-center w-100" style="height: 80rpx;">
       <block v-for="(item, index) in tabBars" :key="index">
         <view
           class="flex-fill text-center font-weight-bold"
@@ -110,7 +110,6 @@ export default {
   mixins: [common],
   data() {
     return {
-      scrollHeight: 600,
       tabIndex: 0,
       tabBars: [
         { id: 1, name: '默认', key: 'def' },
@@ -133,7 +132,6 @@ export default {
     },
   },
   onLoad(e) {
-    const res = uni.getSystemInfoSync()
     e.detail && (this.detail = JSON.parse(decodeURIComponent(e.detail)))
     this.initData()
   },

@@ -1,7 +1,12 @@
 <template>
   <view>
     <view class="flex align-center justify-center flex-column py-4">
-      <image class="rounded-circle" style="width: 100px; height: 100px;" src="/static/nothing.png" mode="aspectFill" />
+      <image
+        class="rounded-circle"
+        style="width: 100px; height: 100px;"
+        src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/nothing.png"
+        mode="aspectFill"
+      />
       <text class="font text-muted mt-2">version: 1.0.0</text>
     </view>
     <uni-list-item title="版本更新"></uni-list-item>

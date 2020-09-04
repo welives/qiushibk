@@ -1,7 +1,6 @@
 <template>
-  <view :style="'height: ' + scrollHeight + 'px;'">
+  <view>
     <!-- #ifdef MP -->
-    <!-- 微信小程序端生效 -->
     <!-- 自定义导航 开始 -->
     <uni-nav-bar :border="false" statusBar fixed @clickLeft="toFriendList">
       <view slot="left" class="px-3 text-center iconfont icon-haoyou font-lg"></view>
@@ -28,7 +27,6 @@
     <!-- 弹出层 开始 -->
     <uni-popup ref="popup" type="top">
       <!-- #ifdef MP -->
-      <!-- 微信小程序端生效 -->
       <view class="bg-white position-absolute left-0 right-0" style="top: 64px;">
         <view class="flex align-center justify-center p-2" @click.stop="toggle('friend')">
           <text class="iconfont icon-sousuo"></text>
@@ -43,7 +41,6 @@
       <!-- #endif -->
 
       <!-- #ifndef MP -->
-      <!-- 其他端生效 -->
       <view class="bg-white">
         <view class="flex align-center justify-center p-2" @click.stop="toggle('friend')">
           <text class="iconfont icon-sousuo"></text>
@@ -112,13 +109,10 @@ export default {
   mixins: [common],
   data() {
     return {
-      scrollHeight: 600,
       dataList: [],
     }
   },
   onLoad() {
-    const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight
     this.initData()
   },
   // 监听刷新事件

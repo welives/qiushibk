@@ -69,7 +69,7 @@ export default {
   },
   onLoad() {
     const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - 50
+    this.scrollHeight = res.windowHeight - uni.upx2px(100)
     uni.setNavigationBarTitle({
       title: '女神',
     })

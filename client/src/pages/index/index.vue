@@ -1,5 +1,5 @@
 <template>
-  <view style="height: 100%;">
+  <view>
     <!-- #ifdef MP -->
     <!-- 自定义导航栏 开始 -->
     <uni-nav-bar :border="false" fixed statusBar @clickLeft="navigateTo('add-posts')">
@@ -49,7 +49,7 @@
         <scroll-view scroll-y style="height: 100%;" @scrolltolower="loadMore(index)">
           <template v-if="item.list.length > 0">
             <block v-for="(list, idx) in item.list" :key="idx">
-              <post-list :item="list" :index="idx" @follow="doFollow" @support="doSupport"></post-list>
+              <post-list :item="list" :index="idx" @follow="doFollow" @support="doSupport" @share="doShare"></post-list>
               <view class="divider"></view>
             </block>
             <!-- 上拉加载 -->
@@ -63,6 +63,7 @@
       </swiper-item>
     </swiper>
     <!-- 滑动内容区 结束 -->
+    <share-icon ref="share"></share-icon>
   </view>
 </template>
 
@@ -120,12 +121,14 @@ const demo = [
 import common from '@/common/mixins/common'
 import postList from '@/components/common/post-list'
 import loadMore from '@/components/common/load-more'
+import shareIcon from '@/components/common/share-icon'
 import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar'
 
 export default {
   components: {
     postList,
     loadMore,
+    shareIcon,
     uniNavBar,
   },
   mixins: [common],
@@ -202,7 +205,6 @@ export default {
   // 监听刷新事件
   onPullDownRefresh() {
     setTimeout(() => {
-      this.page = 1
       this.initData()
       uni.stopPullDownRefresh()
     }, 1000)
@@ -214,6 +216,7 @@ export default {
   methods: {
     // 初始化数据
     initData() {
+      this.load.type = 0
       let arr = []
       this.tabBars.forEach((v, index) => {
         if (index < 3) {
@@ -281,6 +284,10 @@ export default {
         item.support.blame_count--
       }
       item.support.type = e.type
+    },
+    // 分享
+    doShare() {
+      this.$refs.share.open()
     },
   },
 }

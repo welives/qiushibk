@@ -4,7 +4,7 @@
     <scroll-view
       scroll-x
       class="scroll-row border-bottom border-light-secondary"
-      style="height: 40px;"
+      style="height: 80rpx;"
       :scroll-into-view="scrollInto"
       scroll-with-animation
     >
@@ -159,7 +159,7 @@ export default {
   },
   onLoad() {
     const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - 40
+    this.scrollHeight = res.windowHeight - uni.upx2px(80)
     this.initData()
   },
   methods: {

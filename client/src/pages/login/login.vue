@@ -90,7 +90,7 @@
       <button
         type="primary"
         class="border-0 text-white"
-        style="border-radius: 50rpx; letter-spacing: 6rpx;"
+        style="border-radius: 60rpx; letter-spacing: 6rpx;"
         :class="disabled || loading ? 'bg-disabled-main' : 'bg-main'"
         :disabled="disabled || loading"
         @click.stop="submit()"

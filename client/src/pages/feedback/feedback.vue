@@ -18,7 +18,7 @@
       </uni-collapse-item>
     </uni-collapse>
     <view class="px-4 pt-5">
-      <button type="primary" class="border-0 bg-main text-white" style="border-radius: 50rpx; letter-spacing: 6rpx;">
+      <button type="primary" class="border-0 bg-main text-white" style="border-radius: 60rpx; letter-spacing: 6rpx;">
         意见反馈
       </button>
     </view>

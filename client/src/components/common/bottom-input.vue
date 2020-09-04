@@ -1,9 +1,9 @@
 <template>
   <view
     class="fixed-bottom flex align-center justify-between bg-white px-2 border-top border-light-secondary"
-    style="height: 50px;"
+    style="height: 100rpx;"
   >
-    <view class="flex-fill flex align-center rounded" style="height: 40px; ">
+    <view class="flex-fill flex align-center rounded" style="height: 80rpx; ">
       <input
         class="px-2 w-100 bg-light rounded"
         style="height: 100%;"

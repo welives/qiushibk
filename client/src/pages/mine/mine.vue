@@ -16,7 +16,6 @@
           <text class="ml-2">今日发帖 {{ userData.today_count }}</text>
         </view>
       </view>
-      <text class="flex-shrink-0 iconfont icon-jinru font-md px-2"></text>
     </view>
     <view class="flex align-center p-2">
       <view class="flex-fill flex align-center flex-column" v-for="(item, index) in userData.list" :key="index">

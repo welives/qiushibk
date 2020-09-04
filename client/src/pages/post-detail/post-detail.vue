@@ -22,7 +22,7 @@
       <view class="uni-comment-face">
         <image
           style="width: 80rpx; height: 80rpx;"
-          src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg"
+          src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/14.jpg"
           mode="aspectFill"
         />
       </view>
@@ -79,8 +79,6 @@ export default {
     },
   },
   onLoad(e) {
-    const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - 50
     e.detail && (this.detail = JSON.parse(decodeURIComponent(e.detail)))
     uni.setNavigationBarTitle({
       title: this.detail.title,

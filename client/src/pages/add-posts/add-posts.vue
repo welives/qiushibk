@@ -23,7 +23,7 @@
     <!-- 内容区 结束 -->
 
     <!-- 底部操作条 开始 -->
-    <view class="fixed-bottom bg-white flex align-center justify-between w-100" style="height: 50px;">
+    <view class="fixed-bottom bg-white flex align-center justify-between w-100" style="height: 100rpx;">
       <view class="flex-fill flex align-center ml-2 animated">
         <view class="animated" hover-class="pulse">
           <text class="iconfont icon-caidan font-lg"></text>
@@ -39,7 +39,7 @@
         <text class="text-white px-3 py font-md">发帖</text>
       </view>
     </view>
-    <view style="height: 50px;"></view>
+    <view style="height: 100rpx;"></view>
     <!-- 底部操作条 结束 -->
   </view>
 </template>
@@ -71,7 +71,7 @@ export default {
   },
   onLoad() {
     const res = uni.getSystemInfoSync()
-    this.scrollHeight = res.windowHeight - res.statusBarHeight - 44 - 50
+    this.scrollHeight = res.windowHeight - res.statusBarHeight - 44 - uni.upx2px(100)
     uni.getStorage({
       key: 'add-posts',
       success: (res) => {

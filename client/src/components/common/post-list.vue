@@ -99,9 +99,13 @@ export default {
     return {}
   },
   methods: {
+    // 打开用户个人主页
     openSpace() {
-      console.log('打开个人中心')
+      uni.navigateTo({
+        url: '../../pages/user-space/user-space',
+      })
     },
+    // 打开帖子详情
     openDetail() {
       // 不是详情页才跳转
       !this.isDetail &&
