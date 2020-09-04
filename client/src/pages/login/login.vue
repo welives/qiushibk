@@ -3,8 +3,8 @@
     <uni-status-bar></uni-status-bar>
     <!-- 顶部关闭按钮 开始 -->
     <view
-      class="flex align-center justify-center animate__animated"
-      hover-class="text-main animate__pulse"
+      class="flex align-center justify-center animated"
+      hover-class="text-main pulse"
       style="width: 80rpx; height: 80rpx;"
       @click.stop="back()"
     >

@@ -37,7 +37,7 @@
   </view>
 </template>
 <script>
-import permision from '@/common/permission.js'
+import permision from '@/common/js/permission.js'
 var sourceType = [['camera'], ['album'], ['camera', 'album']]
 var sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 export default {

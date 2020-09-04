@@ -9,9 +9,9 @@
       <block v-for="(item, index) in providerList" :key="index">
         <view v-if="item.icon" class="flex-fill flex align-center justify-center">
           <view
-            class="rounded-circle flex align-center justify-center animate__animated"
+            class="rounded-circle flex align-center justify-center animated"
             :class="item.bgColor"
-            hover-class="animate__pulse"
+            hover-class="pulse"
             style="width: 100rpx; height: 100rpx;"
             @click.stop="onSocialLogin(item.id)"
           >

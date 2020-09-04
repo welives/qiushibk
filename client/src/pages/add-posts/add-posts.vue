@@ -24,22 +24,18 @@
 
     <!-- 底部操作条 开始 -->
     <view class="fixed-bottom bg-white flex align-center justify-between w-100" style="height: 50px;">
-      <view class="flex-fill flex align-center ml-2 animate__animated">
-        <view class="animate__animated" hover-class="animate__pulse">
+      <view class="flex-fill flex align-center ml-2 animated">
+        <view class="animated" hover-class="pulse">
           <text class="iconfont icon-caidan font-lg"></text>
         </view>
-        <view class="animate__animated" hover-class="animate__pulse">
+        <view class="animated" hover-class="pulse">
           <text class="iconfont icon-huati font-lg mx-3"></text>
         </view>
-        <view class="animate__animated" hover-class="animate__pulse" @click.stop="iconClickEvent('uploadImage')">
+        <view class="animated" hover-class="pulse" @click.stop="iconClickEvent('uploadImage')">
           <text class="iconfont icon-tupian font-lg"></text>
         </view>
       </view>
-      <view
-        class="flex-shrink-0 mr-2 bg-main rounded animate__animated"
-        hover-class="animate__pulse"
-        @click.stop="post"
-      >
+      <view class="flex-shrink-0 mr-2 bg-main rounded animated" hover-class="pulse" @click.stop="post">
         <text class="text-white px-3 py font-md">发帖</text>
       </view>
     </view>

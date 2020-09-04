@@ -1,6 +1,6 @@
 <template>
   <!-- 列表样式 -->
-  <view class="p-2">
+  <view class="p-2 animated fadeIn">
     <view class="flex align-center justify-between">
       <view class="flex align-center flex-fill">
         <!-- 头像 -->
@@ -20,9 +20,9 @@
       </view>
       <!-- 关注按钮 -->
       <view
-        class="rounded flex-shrink-0 animate__animated"
+        class="rounded flex-shrink-0 animated"
         :class="item.isFollow ? 'bg-light text-dark' : 'bg-main text-white'"
-        :hover-class="item.isFollow ? 'bg-hover-light animate__pulse' : 'bg-hover-main animate__pulse'"
+        :hover-class="item.isFollow ? 'bg-hover-light pulse' : 'bg-hover-main pulse'"
         @click.stop="$emit('follow', index)"
       >
         <text class="px-3 py-1">{{ item.isFollow ? '取消关注' : '关注' }}</text>
@@ -40,8 +40,8 @@
     <view class="flex align-center py-1">
       <!-- 赞 -->
       <view
-        class="flex-fill flex align-center justify-center animate__animated"
-        hover-class="animate__pulse"
+        class="flex-fill flex align-center justify-center animated"
+        hover-class="pulse"
         :class="item.support.type === 'praise' ? 'text-main' : ''"
         @click.stop="onSupport('praise')"
       >
@@ -50,8 +50,8 @@
       </view>
       <!-- 踩 -->
       <view
-        class="flex-fill flex align-center justify-center animate__animated"
-        hover-class="animate__pulse"
+        class="flex-fill flex align-center justify-center animated"
+        hover-class="pulse"
         :class="item.support.type === 'blame' ? 'text-main' : ''"
         @click.stop="onSupport('blame')"
       >
@@ -60,8 +60,8 @@
       </view>
       <!-- 评论 -->
       <view
-        class="flex-fill flex align-center justify-center animate__animated"
-        hover-class="animate__pulse text-main"
+        class="flex-fill flex align-center justify-center animated"
+        hover-class="pulse text-main"
         @click.stop="onComment"
       >
         <text class="iconfont icon-pinglun2"></text>
@@ -69,8 +69,8 @@
       </view>
       <!-- 分享 -->
       <view
-        class="flex-fill flex align-center justify-center animate__animated"
-        hover-class="animate__pulse text-main"
+        class="flex-fill flex align-center justify-center animated"
+        hover-class="pulse text-main"
         @click.stop="onShare"
       >
         <text class="iconfont icon-zhuanfa1"></text>

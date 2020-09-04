@@ -12,9 +12,9 @@
             @click.stop="share(item)"
           >
             <view
-              class="flex align-center justify-center rounded-circle animate__animated"
+              class="flex align-center justify-center rounded-circle animated"
               :class="item.color"
-              hover-class="animate__pulse"
+              hover-class="pulse"
               style="width: 90rpx; height: 90rpx;"
             >
               <text class="uni-icon text-white" :class="item.icon" style="font-size: 50rpx;"></text>

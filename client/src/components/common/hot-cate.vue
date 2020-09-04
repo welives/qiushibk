@@ -11,8 +11,8 @@
     </view>
     <view class="flex align-center justify-center py-2">
       <view
-        class="flex-shrink-0 border rounded bg-light font mx-1 animate__animated"
-        hover-class="animate__pulse"
+        class="flex-shrink-0 border rounded bg-light font mx-1 animated"
+        hover-class="pulse"
         v-for="(item, index) in hotCate"
         :key="index"
       >

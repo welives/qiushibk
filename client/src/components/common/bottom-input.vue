@@ -14,8 +14,8 @@
       />
     </view>
     <view
-      class="flex-shrink-0 text-center text-main animate__animated"
-      hover-class="animate__pulse"
+      class="flex-shrink-0 text-center text-main animated"
+      hover-class="pulse"
       style="width: 50px;"
       @touchend.stop.prevent="onSubmit"
     >
