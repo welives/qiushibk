@@ -1,4 +1,4 @@
-import $T from '@/common/time'
+import $T from '../js/time'
 export default {
   data() {
     return {

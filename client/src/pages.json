@@ -346,7 +346,8 @@
           "titleNView": {
             "buttons": [
               {
-                "type": "menu"
+                "type": "menu",
+                "width": "44px"
               }
             ]
           }

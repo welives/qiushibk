@@ -3,8 +3,16 @@ import App from './App'
 import noData from './components/common/no-data'
 
 Vue.config.productionTip = false
+
 // 引入全局组件
 Vue.component('no-data', noData)
+
+// 引入配置文件
+import $conf from './common/config'
+Vue.prototype.$conf = $conf
+// 引入助手函数库
+import $util from './common/js/util'
+Vue.prototype.$util = $util
 
 App.mpType = 'app'
 

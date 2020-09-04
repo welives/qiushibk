@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import $T from '@/common/time'
+import $T from '@/common/js/time'
 export default {
   props: {
     item: Object,
