@@ -59,11 +59,11 @@ const demo = {
   post: [
     {
       username: '煎蛋',
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
       isFollow: false,
       title: '测试标题1',
       content: '英国大量上班族希望延续远程办公的政策',
-      cover: '/static/demo/datapic/11.jpg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/11.jpg',
       support: {
         type: 'praise',
         praise_count: 10,
@@ -75,11 +75,11 @@ const demo = {
     },
     {
       username: '咸鱼',
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/3.jpg',
       isFollow: true,
       title: '测试标题2',
       content: '外部供应链被切断，内部猴子不够用',
-      cover: '/static/demo/datapic/12.jpg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/12.jpg',
       support: {
         type: 'blame',
         praise_count: 10,
@@ -91,11 +91,11 @@ const demo = {
     },
     {
       username: '绿师',
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/10.jpg',
       isFollow: true,
       title: '测试标题3',
       content: 'Y染色体的消失，并不意味着男性的灭绝',
-      cover: '/static/demo/datapic/2.jpg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/2.jpg',
       support: {
         type: '',
         praise_count: 0,
@@ -109,28 +109,28 @@ const demo = {
   // 话题
   topic: [
     {
-      cover: '/static/demo/topicpic/1.jpeg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/topicpic/1.jpeg',
       title: '话题名称1',
       desc: '话题描述1',
       news_count: 10,
       today_count: 10,
     },
     {
-      cover: '/static/demo/topicpic/2.jpeg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/topicpic/2.jpeg',
       title: '话题名称2',
       desc: '话题描述2',
       news_count: 10,
       today_count: 10,
     },
     {
-      cover: '/static/demo/topicpic/3.jpeg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/topicpic/3.jpeg',
       title: '话题名称3',
       desc: '话题描述3',
       news_count: 10,
       today_count: 10,
     },
     {
-      cover: '/static/demo/topicpic/4.jpeg',
+      cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/topicpic/4.jpeg',
       title: '话题名称4',
       desc: '话题描述4',
       news_count: 10,
@@ -140,28 +140,28 @@ const demo = {
   // 用户
   user: [
     {
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/14.jpg',
       username: '靓女',
       sex: 2, // 0保密, 1男, 2女
       age: 18,
       isFollow: true,
     },
     {
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/10.jpg',
       username: '靓仔',
       sex: 1,
       age: 23,
       isFollow: false,
     },
     {
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
       username: '煎蛋',
       sex: 0,
       age: 30,
       isFollow: true,
     },
     {
-      avatar: '/static/default.jpg',
+      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/8.jpg',
       username: '川普',
       sex: 1,
       age: 66,

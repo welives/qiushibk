@@ -320,7 +320,7 @@
     {
       "path": "pages/about/about",
       "style": {
-        "navigationBarTitleText": "关于社区",
+        "navigationBarTitleText": "关于我们",
         "app-plus": {}
       }
     },

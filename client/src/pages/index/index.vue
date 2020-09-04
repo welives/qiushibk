@@ -1,7 +1,6 @@
 <template>
-  <view @touchmove.stop.prevent="() => {}">
+  <view style="height: 100%;">
     <!-- #ifdef MP -->
-    <!-- 微信小程序端生效 -->
     <!-- 自定义导航栏 开始 -->
     <uni-nav-bar :border="false" fixed statusBar @clickLeft="navigateTo('add-posts')">
       <view slot="left" class="px-3 iconfont icon-fatie_icon font-lg"></view>
@@ -22,8 +21,8 @@
     <scroll-view
       scroll-x
       class="scroll-row border-bottom border-light-secondary"
-      style="height: 40px;"
-      :scroll-into-view="scrollInto"
+      style="height: 80rpx;"
+      :scroll-into-view="scrollTabInto"
       scroll-with-animation
     >
       <view
@@ -71,11 +70,11 @@
 const demo = [
   {
     username: '煎蛋',
-    avatar: '/static/default.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
     isFollow: false,
     title: '测试标题1',
     content: '英国大量上班族希望延续远程办公的政策',
-    cover: '/static/demo/datapic/11.jpg',
+    cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/11.jpg',
     support: {
       type: 'praise',
       praise_count: 10,
@@ -87,11 +86,11 @@ const demo = [
   },
   {
     username: '咸鱼',
-    avatar: '/static/default.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/3.jpg',
     isFollow: true,
     title: '测试标题2',
     content: '外部供应链被切断，内部猴子不够用',
-    cover: '/static/demo/datapic/12.jpg',
+    cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/12.jpg',
     support: {
       type: 'blame',
       praise_count: 10,
@@ -103,11 +102,11 @@ const demo = [
   },
   {
     username: '绿师',
-    avatar: '/static/default.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/10.jpg',
     isFollow: true,
     title: '测试标题3',
     content: 'Y染色体的消失，并不意味着男性的灭绝',
-    cover: '/static/demo/datapic/2.jpg',
+    cover: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/datapic/2.jpg',
     support: {
       type: '',
       praise_count: 0,
@@ -132,6 +131,7 @@ export default {
   mixins: [common],
   data() {
     return {
+      scrollHeight: 600,
       // 顶部选项卡
       tabIndex: 0,
       tabBars: [
@@ -172,35 +172,38 @@ export default {
           name: '本地',
         },
       ],
-      scrollInto: '',
+      scrollTabInto: '',
       dataList: [],
-      scrollHeight: 600,
     }
   },
   onLoad() {
     const res = uni.getSystemInfoSync()
     // #ifdef MP
-    // 微信小程序端生效 内容区高度 = 可用高度 - 自定义导航栏 - 选项卡
-    this.scrollHeight = res.windowHeight - 64 - 40
+    // 小程序端生效 内容区高度 = 可用高度 - 自定义导航栏 - 选项卡
+    this.scrollHeight = res.windowHeight - 64 - uni.upx2px(80)
     // #endif
 
     // #ifndef MP
-    // 非微信小程序端生效 内容区高度 = 可用高度 - 选项卡
-    this.scrollHeight = res.windowHeight - 40
+    // 非小程序端生效 内容区高度 = 可用高度 - 选项卡
+    this.scrollHeight = res.windowHeight - uni.upx2px(80)
     // #endif
     this.initData()
   },
+  // #ifndef MP
   // 原生导航栏输入框点击事件
-  onNavigationBarSearchInputClicked(e) {
+  onNavigationBarSearchInputClicked() {
     this.navigateTo('search', 'type=post')
   },
   // 原生导航栏按钮点击事件
-  onNavigationBarButtonTap(e) {
-    e.index === 0 && this.navigateTo('add-posts')
+  onNavigationBarButtonTap() {
+    this.navigateTo('add-posts')
   },
+  // #endif
   // 监听刷新事件
   onPullDownRefresh() {
     setTimeout(() => {
+      this.page = 1
+      this.initData()
       uni.stopPullDownRefresh()
     }, 1000)
   },
@@ -237,8 +240,8 @@ export default {
     changeTab(index) {
       if (this.tabIndex === index) return
       this.tabIndex = index
-      // 滚动到指定元素
-      this.scrollInto = 'tab_' + this.tabBars[index].id
+      // 滚动到指定选项卡位置
+      this.scrollTabInto = 'tab_' + this.tabBars[index].id
     },
     // swiper组件左右切换
     changeSwiper(e) {

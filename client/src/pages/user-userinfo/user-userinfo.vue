@@ -2,7 +2,11 @@
   <view>
     <uni-list-item title="头像" :showArrow="false">
       <view slot="right" class="flex align-center" @click.stop="setAvatar">
-        <image class="rounded-circle mr-2" style="width: 80rpx; height: 80rpx;" :src="userInfo.avatar"></image>
+        <image
+          class="rounded-circle mr-2"
+          style="width: 80rpx; height: 80rpx;"
+          :src="userInfo.avatar || '/static/default.jpg'"
+        ></image>
         <text class="iconfont icon-bianji1 text-light-muted font"></text>
       </view>
     </uni-list-item>
@@ -87,7 +91,7 @@ export default {
   data() {
     return {
       userInfo: {
-        avatar: '/static/default.jpg',
+        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
         name: {
           isEdit: false,
           text: '煎蛋',

@@ -4,7 +4,12 @@
     <view v-if="chatTime" class="py-1 flex align-center justify-center font-sm text-light-muted">{{ chatTime }}</view>
     <!-- 消息气泡 开始 -->
     <view class="flex align-start p-2" :style="isSelf ? 'flex-direction: row-reverse' : ''">
-      <image class="rounded-circle" style="width: 80rpx; height: 80rpx;" :src="item.avatar" mode="aspectFill" />
+      <image
+        class="rounded-circle"
+        style="width: 80rpx; height: 80rpx;"
+        :src="item.avatar || '/static/default.jpg'"
+        mode="aspectFill"
+      />
       <view
         class="position-relative rounded p-2 mx-3 bubble-width"
         :class="isSelf ? 'bubble-bg-right' : 'bubble-bg-left'"
@@ -17,7 +22,7 @@
 </template>
 
 <script>
-import $T from '@/common/js/time'
+import $time from '@/common/js/time'
 export default {
   props: {
     item: Object,
@@ -34,7 +39,7 @@ export default {
       return this.item.user_id === this.user_id
     },
     chatTime() {
-      return $T.getChatTime(this.item.created_at, this.prevTime)
+      return $time.getChatTime(this.item.created_at, this.prevTime)
     },
   },
 }

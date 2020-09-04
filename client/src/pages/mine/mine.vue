@@ -5,7 +5,7 @@
       <image
         class="rounded-circle flex-shrink-0"
         style="width: 100rpx; height: 100rpx;"
-        :src="userData.avatar"
+        :src="userData.avatar || '/static/default.jpg'"
         mode="aspectFill"
         @click.stop="navigateTo('user-space')"
       />
@@ -27,7 +27,12 @@
     <!-- 用户信息 结束 -->
 
     <view class="px-4 py-2">
-      <image class="w-100 rounded" style="height: 170rpx;" src="/static/demo/banner1.jpg" mode="aspectFill" />
+      <image
+        class="w-100 rounded"
+        style="height: 170rpx;"
+        src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/banner1.jpg"
+        mode="aspectFill"
+      />
     </view>
 
     <!-- 按钮列表 开始 -->
@@ -62,7 +67,7 @@ export default {
       userData: {
         id: 1,
         name: '煎蛋',
-        avatar: '/static/default.jpg',
+        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
         total_count: 1,
         today_count: 0,
         list: [

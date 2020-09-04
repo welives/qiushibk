@@ -162,7 +162,7 @@ export default {
   position: relative;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 30rpx;
+  padding-left: 15px;
 }
 
 .uni-list-item--disabled {
@@ -179,7 +179,7 @@ export default {
   display: flex;
   /* #endif */
   flex-direction: row;
-  padding: 20rpx 30rpx;
+  padding: 12px 15px;
   padding-left: 0;
   flex: 1;
   position: relative;
@@ -188,7 +188,7 @@ export default {
   /* #ifdef APP-PLUS */
   border-top-color: #e5e5e5;
   border-top-style: solid;
-  border-top-width: 1rpx;
+  border-top-width: 0.5px;
   /* #endif */
 }
 
@@ -202,7 +202,7 @@ export default {
   top: 0;
   right: 0;
   left: 0;
-  height: 1rpx;
+  height: 1px;
   content: '';
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
@@ -226,7 +226,7 @@ export default {
 }
 
 .uni-list-item__content-title {
-  font-size: 28rpx;
+  font-size: 14px;
   color: #3b4144;
   overflow: hidden;
 }
@@ -234,7 +234,7 @@ export default {
 .uni-list-item__content-note {
   margin-top: 6rpx;
   color: #999;
-  font-size: 24rpx;
+  font-size: 12px;
   overflow: hidden;
 }
 
@@ -257,12 +257,12 @@ export default {
 }
 
 .uni-list-item__icon-img {
-  height: 52rpx;
-  width: 52rpx;
+  height: 26px;
+  width: 26px;
 }
 
 .uni-list-item__extra-text {
   color: #999;
-  font-size: 24rpx;
+  font-size: 12px;
 }
 </style>

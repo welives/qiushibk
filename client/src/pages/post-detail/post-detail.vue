@@ -20,7 +20,11 @@
     <view class="p-2 font-md font-weight-bold">最新评论</view>
     <view class="uni-comment-list px-2">
       <view class="uni-comment-face">
-        <image style="width: 80rpx; height: 80rpx;" src="/static/default.jpg" mode="aspectFill" />
+        <image
+          style="width: 80rpx; height: 80rpx;"
+          src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg"
+          mode="aspectFill"
+        />
       </view>
       <view class="uni-comment-body">
         <view class="uni-comment-top"><text>小猫咪</text></view>

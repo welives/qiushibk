@@ -4,12 +4,6 @@
 }
 /* #endif */
 
-/* #ifndef MP-WEIXIN || H5 */
-:not(not) {
-  box-sizing: border-box;
-}
-/* #endif */
-
 /* scroll-view */
 /* #ifndef APP-PLUS-NVUE */
 .scroll-row {
