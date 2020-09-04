@@ -22,7 +22,7 @@
       <view class="uni-comment-face">
         <image
           style="width: 80rpx; height: 80rpx;"
-          src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/14.jpg"
+          src="http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg"
           mode="aspectFill"
         />
       </view>

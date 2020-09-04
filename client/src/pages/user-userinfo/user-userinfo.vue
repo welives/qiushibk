@@ -91,7 +91,7 @@ export default {
   data() {
     return {
       userInfo: {
-        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
+        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
         name: {
           isEdit: false,
           text: '煎蛋',

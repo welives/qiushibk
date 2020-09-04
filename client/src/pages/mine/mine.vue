@@ -29,7 +29,7 @@
       <image
         class="w-100 rounded"
         style="height: 170rpx;"
-        src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/banner1.jpg"
+        src="http://qfjny782p.hn-bkt.clouddn.com/demo/banner1.jpg"
         mode="aspectFill"
       />
     </view>
@@ -66,7 +66,7 @@ export default {
       userData: {
         id: 1,
         name: '煎蛋',
-        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
+        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
         total_count: 1,
         today_count: 0,
         list: [

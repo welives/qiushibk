@@ -1,7 +1,7 @@
 <template>
   <view class="flex flex-column align-center justify-center pt-5">
     <image
-      src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/nothing.png"
+      src="http://qfjny782p.hn-bkt.clouddn.com/demo/nothing.png"
       mode="aspectFill"
       style="width: 300rpx; height: 300rpx;"
     />

@@ -55,28 +55,28 @@
 <script>
 const demo = [
   {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/14.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg',
     username: '靓女',
     sex: 2, // 0保密, 1男, 2女
     age: 18,
     isFollow: true,
   },
   {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/10.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
     username: '靓仔',
     sex: 1,
     age: 23,
     isFollow: false,
   },
   {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/default.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
     username: '煎蛋',
     sex: 0,
     age: 30,
     isFollow: true,
   },
   {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/userpic/8.jpg',
+    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/8.jpg',
     username: '川普',
     sex: 1,
     age: 66,

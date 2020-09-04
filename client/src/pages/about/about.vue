@@ -4,7 +4,7 @@
       <image
         class="rounded-circle"
         style="width: 100px; height: 100px;"
-        src="http://qfjny782p.hn-bkt.clouddn.com/qiushibk/demo/nothing.png"
+        src="http://qfjny782p.hn-bkt.clouddn.com/demo/nothing.png"
         mode="aspectFill"
       />
       <text class="font text-muted mt-2">version: 1.0.0</text>
