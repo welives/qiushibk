@@ -1,3 +1,4 @@
+import './common/js/pc'
 import Vue from 'vue'
 import App from './App'
 import noData from './components/common/no-data'

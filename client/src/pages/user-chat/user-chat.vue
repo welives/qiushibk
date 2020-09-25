@@ -23,35 +23,7 @@
 </template>
 
 <script>
-const demo = [
-  {
-    id: 1,
-    user_id: 2,
-    username: '女神',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg',
-    content: '呼叫舔狗',
-    type: 'text',
-    created_at: 1598897479,
-  },
-  {
-    id: 2,
-    user_id: 2,
-    username: '女神',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg',
-    content: '?????????????????????????????????????????????????????????????????????????',
-    type: 'text',
-    created_at: 1598897779,
-  },
-  {
-    id: 3,
-    user_id: 1,
-    username: '舔狗',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
-    content: '汪汪汪',
-    type: 'text',
-    created_at: 1598900918,
-  },
-]
+import demo from './demo'
 import chatList from '@/components/common/chat-list'
 import bottomInput from '@/components/common/bottom-input'
 
@@ -81,7 +53,7 @@ export default {
   methods: {
     // 初始化页面数据
     initData() {
-      this.dataList = demo.map((v) => {
+      this.dataList = demo.dataList.map((v) => {
         return { ...v }
       })
     },

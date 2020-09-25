@@ -53,36 +53,7 @@
 </template>
 
 <script>
-const demo = [
-  {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg',
-    username: '靓女',
-    sex: 2, // 0保密, 1男, 2女
-    age: 18,
-    isFollow: true,
-  },
-  {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
-    username: '靓仔',
-    sex: 1,
-    age: 23,
-    isFollow: false,
-  },
-  {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
-    username: '煎蛋',
-    sex: 0,
-    age: 30,
-    isFollow: true,
-  },
-  {
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/8.jpg',
-    username: '川普',
-    sex: 1,
-    age: 66,
-    isFollow: false,
-  },
-]
+import demo from './demo'
 import common from '@/common/mixins/common'
 import userList from '@/components/common/user-list'
 import loadMore from '@/components/common/load-more'
@@ -124,16 +95,17 @@ export default {
   methods: {
     // 初始化数据
     initData() {
-      let arr = []
-      this.tabBars.forEach((v, index) => {
-        if (index < 2) {
-          arr.push({ list: demo })
+      this.dataList = this.tabBars.map((v, i) => {
+        if (i < 2) {
+          return {
+            list: demo.dataList.map((item) => {
+              return { ...item }
+            }),
+          }
         } else {
-          arr.push({ list: [] })
+          return { list: [] }
         }
       })
-
-      this.dataList = arr
     },
     // swiper组件左右切换
     changeSwiper(e) {

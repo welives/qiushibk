@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import $conf from '@/common/config'
 const sexArr = ['保密', '男', '女']
 const emotionArr = ['保密', '单身', '恋爱中', '未婚', '已婚', '丧偶']
 import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item'
@@ -91,7 +92,7 @@ export default {
   data() {
     return {
       userInfo: {
-        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
+        avatar: `${$conf.ossUrl}/default.jpg`,
         name: {
           isEdit: false,
           text: '煎蛋',

@@ -1,0 +1,32 @@
+import $conf from '@/common/config'
+export default {
+  dataList: [
+    {
+      id: 1,
+      user_id: 2,
+      username: '女神',
+      avatar: `${$conf.ossUrl}/userpic/14.jpg`,
+      content: '呼叫舔狗',
+      type: 'text',
+      created_at: 1598897479,
+    },
+    {
+      id: 2,
+      user_id: 2,
+      username: '女神',
+      avatar: `${$conf.ossUrl}/userpic/14.jpg`,
+      content: '?????????????????????????????????????????????????????????????????????????',
+      type: 'text',
+      created_at: 1598897779,
+    },
+    {
+      id: 3,
+      user_id: 1,
+      username: '舔狗',
+      avatar: `${$conf.ossUrl}/userpic/10.jpg`,
+      content: '汪汪汪',
+      type: 'text',
+      created_at: 1598900918,
+    },
+  ],
+}

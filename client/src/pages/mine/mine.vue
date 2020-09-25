@@ -26,12 +26,7 @@
     <!-- 用户信息 结束 -->
 
     <view class="px-4 py-2">
-      <image
-        class="w-100 rounded"
-        style="height: 170rpx;"
-        src="http://qfjny782p.hn-bkt.clouddn.com/demo/banner1.jpg"
-        mode="aspectFill"
-      />
+      <image class="w-100 rounded" style="height: 170rpx;" :src="$conf.ossUrl + '/banner1.jpg'" mode="aspectFill" />
     </view>
 
     <!-- 按钮列表 开始 -->
@@ -54,6 +49,7 @@
 </template>
 
 <script>
+import $conf from '@/common/config'
 import common from '@/common/mixins/common'
 import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item'
 export default {
@@ -66,7 +62,7 @@ export default {
       userData: {
         id: 1,
         name: '煎蛋',
-        avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
+        avatar: `${$conf.ossUrl}/default.jpg`,
         total_count: 1,
         today_count: 0,
         list: [

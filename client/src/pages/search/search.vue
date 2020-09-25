@@ -52,122 +52,7 @@
 </template>
 
 <script>
-// 测试数据
-const demo = {
-  // 帖子
-  post: [
-    {
-      username: '煎蛋',
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
-      isFollow: false,
-      title: '测试标题1',
-      content: '英国大量上班族希望延续远程办公的政策',
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/11.jpg',
-      support: {
-        type: 'praise',
-        praise_count: 10,
-        blame_count: 10,
-      },
-      comment_count: 0,
-      share_count: 0,
-      created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-    },
-    {
-      username: '咸鱼',
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/3.jpg',
-      isFollow: true,
-      title: '测试标题2',
-      content: '外部供应链被切断，内部猴子不够用',
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/12.jpg',
-      support: {
-        type: 'blame',
-        praise_count: 10,
-        blame_count: 10,
-      },
-      comment_count: 0,
-      share_count: 0,
-      created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-    },
-    {
-      username: '绿师',
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
-      isFollow: true,
-      title: '测试标题3',
-      content: 'Y染色体的消失，并不意味着男性的灭绝',
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/2.jpg',
-      support: {
-        type: '',
-        praise_count: 0,
-        blame_count: 0,
-      },
-      comment_count: 0,
-      share_count: 0,
-      created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-    },
-  ],
-  // 话题
-  topic: [
-    {
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/1.jpeg',
-      title: '话题名称1',
-      desc: '话题描述1',
-      news_count: 10,
-      today_count: 10,
-    },
-    {
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/2.jpeg',
-      title: '话题名称2',
-      desc: '话题描述2',
-      news_count: 10,
-      today_count: 10,
-    },
-    {
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/3.jpeg',
-      title: '话题名称3',
-      desc: '话题描述3',
-      news_count: 10,
-      today_count: 10,
-    },
-    {
-      cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/4.jpeg',
-      title: '话题名称4',
-      desc: '话题描述4',
-      news_count: 10,
-      today_count: 10,
-    },
-  ],
-  // 用户
-  user: [
-    {
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg',
-      username: '靓女',
-      sex: 2, // 0保密, 1男, 2女
-      age: 18,
-      isFollow: true,
-    },
-    {
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
-      username: '靓仔',
-      sex: 1,
-      age: 23,
-      isFollow: false,
-    },
-    {
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
-      username: '煎蛋',
-      sex: 0,
-      age: 30,
-      isFollow: true,
-    },
-    {
-      avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/8.jpg',
-      username: '川普',
-      sex: 1,
-      age: 66,
-      isFollow: false,
-    },
-  ],
-}
+import demo from './demo'
 import postList from '@/components/common/post-list'
 import topicList from '@/components/common/topic-list'
 import userList from '@/components/common/user-list'
@@ -184,26 +69,7 @@ export default {
       // 关键字
       keyword: '',
       // 搜索历史
-      history: [
-        {
-          keyword: 'ThinkPHP5.1',
-        },
-        {
-          keyword: 'layuiAdmin',
-        },
-        {
-          keyword: 'Vue实战项目',
-        },
-        {
-          keyword: 'uni-app实战项目',
-        },
-        {
-          keyword: 'egg.js实战项目',
-        },
-        {
-          keyword: '前后端分离实战项目',
-        },
-      ],
+      history: [],
       // 搜索结果
       dataList: [],
       // 当前搜索类型
@@ -211,6 +77,7 @@ export default {
     }
   },
   onLoad(e) {
+    this.initData()
     // 修改搜索框占位符
     e.type && (this.type = e.type)
     switch (this.type) {
@@ -249,6 +116,11 @@ export default {
     this.search()
   },
   methods: {
+    initData() {
+      this.history = demo.history.map((v) => {
+        return { ...v }
+      })
+    },
     search() {
       if (!this.keyword) {
         return uni.showToast({

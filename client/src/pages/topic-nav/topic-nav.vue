@@ -49,57 +49,7 @@
 </template>
 
 <script>
-const demo = [
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/1.jpeg',
-    title: '话题名称1',
-    desc: '话题描述1',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/2.jpeg',
-    title: '话题名称2',
-    desc: '话题描述2',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/3.jpeg',
-    title: '话题名称3',
-    desc: '话题描述3',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/4.jpeg',
-    title: '话题名称4',
-    desc: '话题描述4',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/5.jpeg',
-    title: '话题名称5',
-    desc: '话题描述5',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/6.jpeg',
-    title: '话题名称6',
-    desc: '话题描述6',
-    news_count: 10,
-    today_count: 10,
-  },
-  {
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/topicpic/7.jpeg',
-    title: '话题名称7',
-    desc: '话题描述7',
-    news_count: 10,
-    today_count: 10,
-  },
-]
+import demo from './demo'
 import common from '@/common/mixins/common'
 import topicList from '@/components/common/topic-list'
 import loadMore from '@/components/common/load-more'
@@ -114,44 +64,7 @@ export default {
     return {
       // 顶部选项卡
       tabIndex: 0,
-      tabBars: [
-        {
-          id: 1,
-          name: '关注',
-        },
-        {
-          id: 2,
-          name: '推荐',
-        },
-        {
-          id: 3,
-          name: '体育',
-        },
-        {
-          id: 4,
-          name: '热点',
-        },
-        {
-          id: 5,
-          name: '财经',
-        },
-        {
-          id: 6,
-          name: '娱乐',
-        },
-        {
-          id: 7,
-          name: '军事',
-        },
-        {
-          id: 8,
-          name: '历史',
-        },
-        {
-          id: 9,
-          name: '本地',
-        },
-      ],
+      tabBars: [],
       scrollInto: '',
       dataList: [],
       scrollHeight: 600,
@@ -165,16 +78,20 @@ export default {
   methods: {
     // 初始化数据
     initData() {
-      let arr = []
-      this.tabBars.forEach((v, index) => {
-        if (index < 3) {
-          arr.push({ list: demo })
+      this.tabBars = demo.tabBars.map((v) => {
+        return { ...v }
+      })
+      this.dataList = this.tabBars.map((v, i) => {
+        if (i < 3) {
+          return {
+            list: demo.topicList.map((item) => {
+              return { ...item }
+            }),
+          }
         } else {
-          arr.push({ list: [] })
+          return { list: [] }
         }
       })
-
-      this.dataList = arr
     },
     // 切换选项卡
     changeTab(index) {

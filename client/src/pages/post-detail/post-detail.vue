@@ -20,11 +20,7 @@
     <view class="p-2 font-md font-weight-bold">最新评论</view>
     <view class="uni-comment-list px-2">
       <view class="uni-comment-face">
-        <image
-          style="width: 80rpx; height: 80rpx;"
-          src="http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/14.jpg"
-          mode="aspectFill"
-        />
+        <image style="width: 80rpx; height: 80rpx;" :src="$conf.ossUrl + '/userpic/14.jpg'" mode="aspectFill" />
       </view>
       <view class="uni-comment-body">
         <view class="uni-comment-top"><text>小猫咪</text></view>
@@ -46,18 +42,8 @@
 </template>
 
 <script>
-const demo = [
-  {
-    url: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1089514877,4018050917&fm=26&gp=0.jpg',
-  },
-  {
-    url:
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598976829399&di=bb882ee4258a34a85065a1c4c83a360a&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D1558734614%2C2571467604%26fm%3D214%26gp%3D0.jpg',
-  },
-  {
-    url: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1547827473,3187986837&fm=26&gp=0.jpg',
-  },
-]
+import $conf from '@/common/config'
+import demo from './demo'
 import postList from '@/components/common/post-list'
 import bottomInput from '@/components/common/bottom-input'
 import shareIcon from '@/components/common/share-icon'
@@ -93,7 +79,7 @@ export default {
   },
   methods: {
     initData() {
-      this.detail.imageList = demo.map((v) => {
+      this.detail.imageList = demo.imageList.map((v) => {
         return { ...v }
       })
     },

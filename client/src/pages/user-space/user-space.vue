@@ -92,56 +92,7 @@
 </template>
 
 <script>
-const demo = [
-  {
-    username: '煎蛋',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/default.jpg',
-    isFollow: false,
-    title: '测试标题1',
-    content: '英国大量上班族希望延续远程办公的政策',
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/11.jpg',
-    support: {
-      type: 'praise',
-      praise_count: 10,
-      blame_count: 10,
-    },
-    comment_count: 0,
-    share_count: 0,
-    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-  },
-  {
-    username: '咸鱼',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/3.jpg',
-    isFollow: true,
-    title: '测试标题2',
-    content: '外部供应链被切断，内部猴子不够用',
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/12.jpg',
-    support: {
-      type: 'blame',
-      praise_count: 10,
-      blame_count: 10,
-    },
-    comment_count: 0,
-    share_count: 0,
-    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-  },
-  {
-    username: '绿师',
-    avatar: 'http://qfjny782p.hn-bkt.clouddn.com/demo/userpic/10.jpg',
-    isFollow: true,
-    title: '测试标题3',
-    content: 'Y染色体的消失，并不意味着男性的灭绝',
-    cover: 'http://qfjny782p.hn-bkt.clouddn.com/demo/datapic/2.jpg',
-    support: {
-      type: '',
-      praise_count: 0,
-      blame_count: 0,
-    },
-    comment_count: 0,
-    share_count: 0,
-    created_at: new Date().getTime() - Math.floor(Math.random() * 1e10),
-  },
-]
+import demo from './demo'
 import common from '@/common/mixins/common'
 import postList from '@/components/common/post-list'
 import uniPopup from '@/components/uni-ui/uni-popup/uni-popup'
@@ -183,7 +134,9 @@ export default {
       this.dataList = this.tabBars.map((v) => {
         let list = []
         if (v.key !== 'home') {
-          list = demo
+          list = demo.dataList.map((item) => {
+            return { ...item }
+          })
         }
         return {
           ...v,
