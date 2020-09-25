@@ -84,7 +84,7 @@
     "title": "仿糗事百科",
     // "router": {
     //   "mode": "hash",
-    //   "base": "/resume"
+    //   "base": "/qiushibk"
     // },
     "template": "h5.html",
     "optimization": {
