@@ -79,5 +79,21 @@
   },
   "mp-qq": {
     "usingComponents": true
+  },
+  "h5": {
+    "title": "仿糗事百科",
+    // "router": {
+    //   "mode": "hash",
+    //   "base": "/resume"
+    // },
+    "template": "h5.html",
+    "optimization": {
+      "treeShaking": {
+        "enable": true
+      }
+    },
+    "devServer": {
+      "https": false
+    }
   }
 }
