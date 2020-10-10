@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import $conf from '@/common/config'
 import common from '@/common/mixins/common'
 import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item'
 export default {
@@ -59,10 +58,11 @@ export default {
   mixins: [common],
   data() {
     return {
+      $conf: this.$conf,
       userData: {
         id: 1,
         name: '煎蛋',
-        avatar: `${$conf.ossUrl}/default.jpg`,
+        avatar: `${this.$conf.ossUrl}/default.jpg`,
         total_count: 1,
         today_count: 0,
         list: [

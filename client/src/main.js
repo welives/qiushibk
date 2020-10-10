@@ -1,4 +1,6 @@
+// #ifdef H5
 import './common/js/pc'
+// #endif
 import Vue from 'vue'
 import App from './App'
 import noData from './components/common/no-data'

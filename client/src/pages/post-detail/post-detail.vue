@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import $conf from '@/common/config'
 import demo from './demo'
 import postList from '@/components/common/post-list'
 import bottomInput from '@/components/common/bottom-input'
@@ -56,6 +55,7 @@ export default {
   },
   data() {
     return {
+      $conf: this.$conf,
       detail: {},
     }
   },

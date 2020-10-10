@@ -15,14 +15,15 @@
 </template>
 
 <script>
-import $conf from '@/common/config'
 import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item'
 export default {
   components: {
     uniListItem,
   },
   data() {
-    return {}
+    return {
+      $conf: this.$conf,
+    }
   },
   methods: {},
 }
